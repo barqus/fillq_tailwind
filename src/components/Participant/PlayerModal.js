@@ -66,12 +66,34 @@ const PlayerModal = ({ setShowModal, name }) => {
                                         of themselves! They're slowed down by their perception of
                                         themselves. If you're taught you can’t do anything, you
                                     </p>
+                                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                        I always felt like I could do anything. That’s the main
+                                        thing people are controlled by! Thoughts- their perception
+                                        of themselves! They're slowed down by their perception of
+                                        themselves. If you're taught you can’t do anything, you
+                                    </p><p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                        I always felt like I could do anything. That’s the main
+                                        thing people are controlled by! Thoughts- their perception
+                                        of themselves! They're slowed down by their perception of
+                                        themselves. If you're taught you can’t do anything, you
+                                    </p>
+                                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                        I always felt like I could do anything. That’s the main
+                                        thing people are controlled by! Thoughts- their perception
+                                        of themselves! They're slowed down by their perception of
+                                        themselves. If you're taught you can’t do anything, you
+                                    </p><p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                                        I always felt like I could do anything. That’s the main
+                                        thing people are controlled by! Thoughts- their perception
+                                        of themselves! They're slowed down by their perception of
+                                        themselves. If you're taught you can’t do anything, you
+                                    </p>
                                 </div>
                             </div>
 
                         </div>
                         {/*footer*/}
-                        {/* <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                             <button
                                 className="text-red-500 border-2 border-red-500 rounded-md background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                 type="button"
@@ -79,7 +101,7 @@ const PlayerModal = ({ setShowModal, name }) => {
                             >
                                 UŽDARYTI
                             </button>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>
