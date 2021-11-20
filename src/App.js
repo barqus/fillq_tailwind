@@ -10,6 +10,8 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import TwitchRedirect from './pages/TwitchRedirect';
 import Pickems from './pages/Pickems';
+import Highlights from './pages/Highlights';
+
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)
@@ -31,15 +33,16 @@ function App() {
 
   return (
     <div className="bg-main-background bg-cover bg-no-repeat bg-center bg-fixed">
-      <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
+      {/* <NavBar toggle={toggle} userID={userID} setUserID={setUserID} /> */}
       <Layout>
-        <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
+        {/* <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} /> */}
         <div>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/dalyviai" element={<Participants />} />
+            {/* <Route path="/dalyviai" element={<Participants />} />
             <Route path="/pickems" element={<Pickems />} />
-            <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} />
+            <Route path="/video" element={<Highlights />} />
+            <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} /> */}
 
           </Routes>
         </div>
