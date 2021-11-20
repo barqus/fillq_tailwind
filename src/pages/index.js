@@ -5,7 +5,7 @@ import pogchamp from '../components/assets/pogchamp.png';
 
 const Home = () => {
     return (
-        <div className="text-white text-5xl md:text-8xl font-bold font-sans text-center mt-52">
+        <div className="text-white text-5xl md:text-8xl font-bold font-sans text-center md:mt-52">
             <h1> FILLQ SUGRĮŽTA </h1><img src={pogchamp} className="object-contain inline" alt="PogChamp"></img> 
             <h2 className="mt-6 text-4xl"> Sekite naujienas: 
                 <AiOutlineFacebook className="cursor-pointer text-6xl inline mb-1 mx-2" onClick={()=> window.open("https://www.facebook.com/ironwolveslt", "_blank")}></AiOutlineFacebook> 
