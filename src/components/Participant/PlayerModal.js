@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import useOutsideAlerter from '../UseOutsideAlerter';
 import { AiOutlineClose } from 'react-icons/ai'
 
-const PlayerModal = ({ setShowModal, name }) => {
+const PlayerModal = ({ setShowModal, participant }) => {
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, setShowModal);
     useKeypress('Escape', () => {
@@ -19,7 +19,7 @@ const PlayerModal = ({ setShowModal, name }) => {
                     <div className="mt-32 border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
                         <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t bg-gradient-to-r from-purple-800 to-green-500 ">
                             <h3 className="text-3xl font-semibold text-white">
-                                {name}
+                                {participant.nickname}
                             </h3>
                             <div className=" cursor-pointer p-1 ml-auto border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                                 <AiOutlineClose onClick={() => setShowModal(false)}/>  
@@ -44,8 +44,8 @@ const PlayerModal = ({ setShowModal, name }) => {
                                         of themselves! They're slowed down by their perception of
                                         themselves. If you're taught you can’t do anything, you
                                     </p> */}
-                                    <p className="mt-4 text-purple-400">Vardenis</p>
-                                    <p className="my-2 text-purple-400">Pavardenis</p>
+                                    <p className="mt-4 mb-2 text-purple-400">{participant.name}</p>
+                                    <p className="my-2 text-purple-400">{participant.surname}</p>
                                     
                                     
                                 </div>

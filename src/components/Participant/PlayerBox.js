@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import PlayerModal from './PlayerModal';
 
-const PlayerBox = ({name}) => {
+const PlayerBox = ({participant}) => {
     const [isHovered, setIsHovered] = useState(false)
     const [showModal, setShowModal] = useState(false)
     return (
@@ -14,9 +14,9 @@ const PlayerBox = ({name}) => {
                 paddingTop: "31px",
                 boxShadow: isHovered ? "0 0 10px 5px #fff, 0 0 10px 5px #f0f,0 0 10px 5px #0ff" : null
                 }}>
-                <span className={isHovered ? `text-2xl` : `text-xl`}>{name}</span>
+                <span className={isHovered ? `text-2xl` : `text-xl`}>{participant.nickname}</span>
             </div>
-            { showModal ? <PlayerModal setShowModal={setShowModal} name={name} /> : ""}
+            { showModal ? <PlayerModal setShowModal={setShowModal} participant={participant} /> : ""}
         </>
     )
 }

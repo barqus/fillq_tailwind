@@ -12,16 +12,19 @@ const NavBar = ({toggle, userID, setUserID}) => {
     useEffect(() => {
         if(userID !== null) {
             const apiEndpoint = "http://localhost:8080/api/v1/user/" + userID
+            // TODO: ADD TRY CATCH HERE
+            // TODO: FIX ALL LOCALHOST TO HOST
+            // TODO: FIX API CALLS TO USE SAME FUNCTION FROM UTILS
             axios.get(apiEndpoint)
                 .then(res => {
                     setUserInfo(res.data)
                 })
                 .catch(
                     () => {
-                        console.log("HERRE")
-                        setUserID(null)
+                        setUserID("")
                     }
                 )
+                
         }
     }, [setUserID, userID])
 

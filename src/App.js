@@ -11,10 +11,16 @@ import Layout from './components/Layout';
 import TwitchRedirect from './pages/TwitchRedirect';
 import Pickems from './pages/Pickems';
 import Highlights from './pages/Highlights';
+import axios from 'axios'
+import Background from './components/assets/background.png';
+import fetchDataCall from './components/utils/fetchApi'
+import Spinner from './components/utils/Spinner';
 
-function App() {
+function App({hideLoader}) {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)
+  const [participants, setParticipants] = useState([])
+  const [loading, setLoading] = useState(true)
   const toggle = () => {
     setIsOpen(!isOpen)
   }
@@ -25,30 +31,44 @@ function App() {
         setIsOpen(false)
       }
     }
+
+    const fetchData = async api => {
+      let response = await fetchDataCall({ api: api });
+      setParticipants(response.data);
+    };
+    fetchData('http://localhost:8080/api/v1/participants/');
     
-    window.addEventListener('resize',hideMenu)
+    window.addEventListener('resize', hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
-    console.log("HERE", localStorage.getItem('twitchCode'))
-  },[])
-
+    
+    hideLoader()
+    setLoading(false)
+  }, [])
+  // TODO: IMPLEMENT AWS CLOUDWATCH?
+  // TODO: ADD LOGO IN WEBS HEAD
+  if (loading) {
+    return null;
+  }
   return (
-    <div className="bg-main-background bg-cover bg-no-repeat bg-center bg-fixed">
-      {/* <NavBar toggle={toggle} userID={userID} setUserID={setUserID} /> */}
-      <Layout>
-        {/* <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} /> */}
-        <div>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            {/* <Route path="/dalyviai" element={<Participants />} />
-            <Route path="/pickems" element={<Pickems />} />
-            <Route path="/video" element={<Highlights />} />
-            <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} /> */}
-
-          </Routes>
-        </div>
-      </Layout>
-      <Footer />
+    <div>
+      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
+        <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
+        <Layout>
+          <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
+          <div>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/dalyviai" element={<Participants participants={participants} />} />
+              <Route path="/pickems" element={<Pickems participants={participants} />} />
+              <Route path="/video" element={<Highlights />} />
+              <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} />
+            </Routes>
+          </div>
+        </Layout>
+        <Footer />
+      </div>
     </div>
+
   );
 }
 

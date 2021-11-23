@@ -3,14 +3,37 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState, useEffect } from 'react';
 import "./DragableTable.css"
 import { GiTrophy } from 'react-icons/gi';
-
-const DragableTable = ({ allParticipants }) => {
-    const [players, updatePlayers] = useState(allParticipants);
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
+const DragableTable = ({ participants }) => {
+    const [players, updatePlayers] = useState([]);
     const [userID, setUserID] = useState(0);
-
+    const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
+    const notify = () => toast.success("IŠSAUGOTA!");
+    const notifyError = () => toast.error("Nepavyko išsaugoti...");
+    const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
     useEffect(() => {
         setUserID(localStorage.getItem('twitchCode'))
-    }, [setUserID])
+        // http://localhost:8080/api/v1/pickems/107170813
+        const fetchData = async () => {
+            const result = await axios(
+                'http://localhost:8080/api/v1/pickems/' + localStorage.getItem('twitchCode'),
+            );
+            console.log("🚀 ~ file: DragableTable.js ~ line 19 ~ fetchData ~ result", result)
+            if (result.data.length > 0) {
+                updatePlayers(result.data);
+                setUserAlreadyPosted(true)
+            }
+            else {
+                updatePlayers(participants)
+            }
+        };
+
+        fetchData();
+    }, [setUserID, updatePlayers, participants])
+
     function handleOnDragEnd(result) {
         if (!result.destination) return;
 
@@ -20,8 +43,37 @@ const DragableTable = ({ allParticipants }) => {
 
         updatePlayers(items);
     }
-    const savePickEms = () => {
-        console.log(players)
+    const savePickEms = async () => {
+        var objectToPost = []
+        if (userAlreadyPosted) {
+            await axios.delete(
+                'http://localhost:8080/api/v1/pickems/' + userID, { withCredentials: true }
+            ).catch(() => {
+                notifyDeleteError()
+                return
+            })
+        }
+
+        players.forEach((element, index) => {
+            objectToPost.push(
+                {
+                    user_id: Number(userID),
+                    participant_id: element.participant_id,
+                    position: index
+                }
+            )
+        });
+
+        await axios.post('http://localhost:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+        .then((res) => {
+            if(res.status < 300) {
+                notify()
+                setUserAlreadyPosted(true)
+            }
+        })
+        .catch(() => {
+            notifyError()
+        })
     }
     return (
         <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
@@ -42,7 +94,7 @@ const DragableTable = ({ allParticipants }) => {
                         of themselves! They're slowed down by their perception of
                         themselves. If you're taught you can’t do anything, you
                     </p>
-                    <hr className="mr-4 ml-4 mt-6"/>
+                    <hr className="mr-4 ml-4 mt-6" />
                     <p className="pt-4 text-xl">PASIRINKTI LIKO LAIKO: 12H:30M:30S</p>
                     {/* <hr className="m-auto" ></hr> */}
                 </div>
@@ -52,9 +104,9 @@ const DragableTable = ({ allParticipants }) => {
                         <Droppable droppableId="players">
                             {(provided) => (
                                 <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
-                                    {players.map(({ name, image }, index) => {
+                                    {players.map(({ nickname }, index) => {
                                         return (
-                                            <Draggable key={name} draggableId={name} index={index}>
+                                            <Draggable key={nickname} draggableId={nickname} index={index}>
                                                 {(provided) => (
                                                     <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                                         className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
@@ -66,7 +118,7 @@ const DragableTable = ({ allParticipants }) => {
                                                             {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
                                                                 : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
                                                                     : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
-                                                            {index + 1}. {name}
+                                                            {index + 1}. {nickname}
                                                         </p>
                                                     </li>
                                                 )}
@@ -78,16 +130,16 @@ const DragableTable = ({ allParticipants }) => {
                             )}
                         </Droppable>
                     </DragDropContext>
-                    {/* TODO: ADD CHECK HERE IF USER IS LOGGED IN */}
-                    {userID !== null && 
-                    <button onClick={() => savePickEms()}
-                        className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
-                        IŠSAUGOTI
-                    </button>}
+                    {userID !== null &&
+                        <button onClick={() => savePickEms()}
+                            className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
+                            {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
+                        </button>}
 
                 </div>
 
             </div>
+            <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
         </div>
     )
 }
