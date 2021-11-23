@@ -11,8 +11,10 @@ import Layout from './components/Layout';
 import TwitchRedirect from './pages/TwitchRedirect';
 import Pickems from './pages/Pickems';
 import Highlights from './pages/Highlights';
+import Background from './components/assets/background.png';
 
-function App() {
+
+function App({hideLoader}) {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)
   const toggle = () => {
@@ -25,14 +27,15 @@ function App() {
         setIsOpen(false)
       }
     }
-    
+
     window.addEventListener('resize',hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
-    console.log("HERE", localStorage.getItem('twitchCode'))
-  },[])
+    
+    hideLoader()
+  }, [])
 
   return (
-    <div className="bg-main-background bg-cover bg-no-repeat bg-center bg-fixed">
+    <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
       {/* <NavBar toggle={toggle} userID={userID} setUserID={setUserID} /> */}
       <Layout>
         {/* <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} /> */}
