@@ -5,8 +5,7 @@ import useOutsideAlerter from '../UseOutsideAlerter';
 import { AiOutlineClose } from 'react-icons/ai'
 import Amplify, { Analytics } from 'aws-amplify';
 
-
-
+Analytics.record({ name: 'PlayerModal visited'});
 const PlayerModal = ({ setShowModal, participant }) => {
     useEffect(() => {
         Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });
