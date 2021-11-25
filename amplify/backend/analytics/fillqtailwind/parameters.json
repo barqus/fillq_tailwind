@@ -1,0 +1,21 @@
+{
+    "appName": "fillqtailwind",
+    "roleName": "pinpointLambdaRole53499233",
+    "cloudformationPolicyName": "cloudformationPolicy53499233",
+    "cloudWatchPolicyName": "cloudWatchPolicy53499233",
+    "pinpointPolicyName": "pinpointPolicy53499233",
+    "authPolicyName": "pinpoint_amplify_53499233",
+    "unauthPolicyName": "pinpoint_amplify_53499233",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

@@ -15,8 +15,11 @@ import axios from 'axios'
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
+import Amplify, { Analytics } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
-function App({hideLoader}) {
+function App({ hideLoader }) {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)
   const [participants, setParticipants] = useState([])
@@ -34,13 +37,16 @@ function App({hideLoader}) {
 
     const fetchData = async api => {
       let response = await fetchDataCall({ api: api });
-      setParticipants(response.data);
+      if (response !== undefined) {
+        setParticipants(response.data);
+      }
+
     };
     fetchData('http://localhost:8080/api/v1/participants/');
-    
+
     window.addEventListener('resize', hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
-    
+
     hideLoader()
     setLoading(false)
   }, [])

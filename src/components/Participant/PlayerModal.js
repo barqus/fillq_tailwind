@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import useKeypress from '../UseKeypress'
 import { useRef } from 'react';
 import useOutsideAlerter from '../UseOutsideAlerter';
 import { AiOutlineClose } from 'react-icons/ai'
+import Amplify, { Analytics } from 'aws-amplify';
+
+
 
 const PlayerModal = ({ setShowModal, participant }) => {
+    useEffect(() => {
+        Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });
+    }, [])
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, setShowModal);
     useKeypress('Escape', () => {

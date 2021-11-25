@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "fillqtailwind_identitypool_a40e963e",
+    "allowUnauthenticatedIdentities": true,
+    "authSelections": "identityPoolOnly",
+    "resourceName": "fillqtailwind",
+    "sharedId": "a40e963e",
+    "serviceName": "Cognito",
+    "useDefault": "manual"
+  }
+}
