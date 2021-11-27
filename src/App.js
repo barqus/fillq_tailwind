@@ -11,7 +11,7 @@ import Layout from './components/Layout';
 import TwitchRedirect from './pages/TwitchRedirect';
 import Pickems from './pages/Pickems';
 import Highlights from './pages/Highlights';
-import Sponsors from './pages/Sponsors.js';
+import Sponsors from './pages/SponsorPage.js';
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
