@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import useOutsideAlerter from '../UseOutsideAlerter';
 import { AiOutlineClose } from 'react-icons/ai'
 import Amplify, { Analytics } from 'aws-amplify';
-
+// TODO: HOW TO IMPLEMENT RECORD THINGIES
 Analytics.record({ name: 'PlayerModal visited'});
 const PlayerModal = ({ setShowModal, participant }) => {
     useEffect(() => {

@@ -11,7 +11,7 @@ import Layout from './components/Layout';
 import TwitchRedirect from './pages/TwitchRedirect';
 import Pickems from './pages/Pickems';
 import Highlights from './pages/Highlights';
-import axios from 'axios'
+import Sponsors from './pages/Sponsors';
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
@@ -42,7 +42,7 @@ function App({ hideLoader }) {
       }
 
     };
-    fetchData('http://localhost:8080/api/v1/participants/');
+    fetchData('participants/');
 
     window.addEventListener('resize', hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
@@ -67,6 +67,7 @@ function App({ hideLoader }) {
               <Route path="/dalyviai" element={<Participants participants={participants} />} />
               <Route path="/pickems" element={<Pickems participants={participants} />} />
               <Route path="/video" element={<Highlights />} />
+              <Route path="/remejai" element={<Sponsors />} />
               <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} />
             </Routes>
           </div>

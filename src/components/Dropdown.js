@@ -9,9 +9,10 @@ import { useLocation } from 'react-router-dom'
 const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
     const [userInfo, setUserInfo] = useState({})
     const location = useLocation();
+    const endPoint = "http://3.123.229.48:8080/api/v1/user/"
     useEffect(() => {
         if(userID !== null) {
-            const apiEndpoint = "http://localhost:8080/api/v1/user/" + userID
+            const apiEndpoint = endPoint + userID
             axios.get(apiEndpoint)
                 .then(res => {
                     setUserInfo(res.data)

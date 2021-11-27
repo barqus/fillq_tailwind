@@ -5,7 +5,7 @@ import axios from 'axios'
 const Participants = ({participants}) => {
     // const [participants, setParticipants] = useState([])
     // useEffect(() => {
-    //     const apiEndpoint = "http://localhost:8080/api/v1/participants/"
+    //     const apiEndpoint = "http://3.123.229.48:8080/api/v1/participants/"
     //     axios.get(apiEndpoint)
     //         .then(res => {
     //             setParticipants(res.data)
@@ -20,7 +20,7 @@ const Participants = ({participants}) => {
     // useEffect(() => {
     //     const fetchData = async () => {
     //         const result = await axios(
-    //             'http://localhost:8080/api/v1/participants/',
+    //             'http://3.123.229.48:8080/api/v1/participants/',
     //         );
 
     //         setParticipants(result.data);

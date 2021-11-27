@@ -16,10 +16,10 @@ const DragableTable = ({ participants }) => {
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
     useEffect(() => {
         setUserID(localStorage.getItem('twitchCode'))
-        // http://localhost:8080/api/v1/pickems/107170813
+        // http://3.123.229.48:8080/api/v1/pickems/107170813
         const fetchData = async () => {
             const result = await axios(
-                'http://localhost:8080/api/v1/pickems/' + localStorage.getItem('twitchCode'),
+                'http://3.123.229.48:8080/api/v1/pickems/' + localStorage.getItem('twitchCode'),
             );
             console.log("🚀 ~ file: DragableTable.js ~ line 19 ~ fetchData ~ result", result)
             if (result.data.length > 0) {
@@ -47,7 +47,7 @@ const DragableTable = ({ participants }) => {
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
-                'http://localhost:8080/api/v1/pickems/' + userID, { withCredentials: true }
+                'http://3.123.229.48:8080/api/v1/pickems/' + userID, { withCredentials: true }
             ).catch(() => {
                 notifyDeleteError()
                 return
@@ -64,7 +64,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('http://localhost:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+        await axios.post('http://3.123.229.48:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
         .then((res) => {
             if(res.status < 300) {
                 notify()
