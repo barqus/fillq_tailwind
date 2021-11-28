@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom'
 const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
     const [userInfo, setUserInfo] = useState({})
     const location = useLocation();
-    const endPoint = "https://3.123.229.48:8080/api/v1/user/"
+    const endPoint = "http://3.123.229.48:8080/api/v1/user/"
     useEffect(() => {
         if(userID !== null) {
             const apiEndpoint = endPoint + userID

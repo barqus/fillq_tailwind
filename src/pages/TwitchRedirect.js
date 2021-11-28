@@ -9,7 +9,7 @@ const TwitchRedirect = ({ userID, setUserID }) => {
     useEffect(() => {
         const twitchCode = new URLSearchParams(location.search).get("code")
         console.log(twitchCode)
-        const apiEndpoint = "https://3.123.229.48:8080/api/v1/user/login/" + twitchCode
+        const apiEndpoint = "http://3.123.229.48:8080/api/v1/user/login/" + twitchCode
         axios.get(apiEndpoint,{withCredentials: true})
             .then(res => {
                 const twitchUserID = res.data;
