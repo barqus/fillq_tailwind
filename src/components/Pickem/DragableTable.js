@@ -64,7 +64,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('http://3.123.229.48:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+        await axios.post('http://3.123.229.48:8080/api/v1/pickems/' + userID, objectToPost)
         .then((res) => {
             if(res.status < 300) {
                 notify()
