@@ -20,7 +20,7 @@ const DragableTable = ({ participants }) => {
         
         const fetchData = async () => {
             const result = await axios(
-                'https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + localStorage.getItem('twitchCode'),{headers: {Authorization: `Bearer ${token}`} }
+                'https://fillq-333518.appspot.com/api/v1/pickems/' + localStorage.getItem('twitchCode'),{headers: {Authorization: `Bearer ${token}`} }
             );
             console.log("🚀 ~ file: DragableTable.js ~ line 19 ~ fetchData ~ result", result)
             if (result.data.length > 0) {
@@ -50,7 +50,7 @@ const DragableTable = ({ participants }) => {
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
-                'https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + userID, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  }
+                'https://fillq-333518.appspot.com/api/v1/pickems/' + userID, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  }
             ).catch(() => {
                 notifyDeleteError()
                 return
@@ -67,7 +67,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + userID, objectToPost, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  })
+        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  })
         .then((res) => {
             if(res.status < 300) {
                 notify()

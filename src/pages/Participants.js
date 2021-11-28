@@ -5,7 +5,7 @@ import axios from 'axios'
 const Participants = ({participants}) => {
     // const [participants, setParticipants] = useState([])
     // useEffect(() => {
-    //     const apiEndpoint = "https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/participants/"
+    //     const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/participants/"
     //     axios.get(apiEndpoint)
     //         .then(res => {
     //             setParticipants(res.data)
@@ -20,7 +20,7 @@ const Participants = ({participants}) => {
     // useEffect(() => {
     //     const fetchData = async () => {
     //         const result = await axios(
-    //             'https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/participants/',
+    //             'https://fillq-333518.appspot.com/api/v1/participants/',
     //         );
 
     //         setParticipants(result.data);
