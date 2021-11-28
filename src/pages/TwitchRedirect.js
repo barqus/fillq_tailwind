@@ -17,7 +17,7 @@ const TwitchRedirect = ({ userID, setUserID }) => {
                 setUserID(twitchUserID)
                 navigate("/")
             })
-            .catch();
+            .catch((err) => console.log(err));
     }, [location, navigate, setUserID]);
 
     return (
