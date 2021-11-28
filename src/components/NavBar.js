@@ -32,7 +32,7 @@ const NavBar = ({ toggle, userID, setUserID }) => {
     const accountAction = () => {
         if (userID === null) {
             const REACT_APP_TWITCH_CLIENT_ID = "q710om0wgq4hd1e9a0ndi6qgryikee"
-            const REACT_APP_TWITCH_REDIRECT_URI = "http://localhost:3000/twitchRedirect"
+            const REACT_APP_TWITCH_REDIRECT_URI = "https://master.dtk76o5bnxc81.amplifyapp.com/twitchRedirect"
             var twitchLoginURI = `https://id.twitch.tv/oauth2/authorize?client_id=${REACT_APP_TWITCH_CLIENT_ID}&response_type=code&scope=user:read:email&redirect_uri=${REACT_APP_TWITCH_REDIRECT_URI}`
             window.location.href = twitchLoginURI
         }
