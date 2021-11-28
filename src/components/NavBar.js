@@ -12,7 +12,7 @@ const NavBar = ({ toggle, userID, setUserID }) => {
     const location = useLocation();
     useEffect(() => {
         if (userID !== null) {
-            const apiEndpoint = "http://3.123.229.48:8080/api/v1/user/" + userID
+            const apiEndpoint = "https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/user/" + userID
             // TODO: ADD TRY CATCH HERE
             // TODO: FIX ALL LOCALHOST TO HOST
             // TODO: FIX API CALLS TO USE SAME FUNCTION FROM UTILS

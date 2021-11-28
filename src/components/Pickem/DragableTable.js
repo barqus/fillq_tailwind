@@ -16,10 +16,11 @@ const DragableTable = ({ participants }) => {
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
     useEffect(() => {
         setUserID(localStorage.getItem('twitchCode'))
-        // http://3.123.229.48:8080/api/v1/pickems/107170813
+        const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
+        
         const fetchData = async () => {
             const result = await axios(
-                'http://3.123.229.48:8080/api/v1/pickems/' + localStorage.getItem('twitchCode'),
+                'https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + localStorage.getItem('twitchCode'),{headers: {Authorization: `Bearer ${token}`} }
             );
             console.log("🚀 ~ file: DragableTable.js ~ line 19 ~ fetchData ~ result", result)
             if (result.data.length > 0) {
@@ -44,10 +45,12 @@ const DragableTable = ({ participants }) => {
         updatePlayers(items);
     }
     const savePickEms = async () => {
+        const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
+
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
-                'http://3.123.229.48:8080/api/v1/pickems/' + userID, { withCredentials: true }
+                'https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + userID, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  }
             ).catch(() => {
                 notifyDeleteError()
                 return
@@ -64,7 +67,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('http://3.123.229.48:8080/api/v1/pickems/' + userID, objectToPost)
+        await axios.post('https://8080-265f63c4-b237-4a37-a931-06899ce61dd0.cs-europe-west4-bhnf.cloudshell.dev/api/v1/pickems/' + userID, objectToPost, { withCredentials: true,headers: {Authorization: `Bearer ${token}`}  })
         .then((res) => {
             if(res.status < 300) {
                 notify()
