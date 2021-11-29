@@ -9,12 +9,11 @@ import { useLocation } from 'react-router-dom'
 const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
     const [userInfo, setUserInfo] = useState({})
     const location = useLocation();
-    const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
     const endPoint = "https://fillq-333518.appspot.com/api/v1/user/"
     useEffect(() => {
         if(userID !== null) {
             const apiEndpoint = endPoint + userID
-            axios.get(apiEndpoint, { crossDomain: true, headers: {Authorization: `Bearer ${token}`} })
+            axios.get(apiEndpoint)
                 .then(res => {
                     setUserInfo(res.data)
                 })
