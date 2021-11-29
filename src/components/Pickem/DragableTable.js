@@ -44,6 +44,7 @@ const DragableTable = ({ participants }) => {
     const savePickEms = async () => {
         var objectToPost = []
         if (userAlreadyPosted) {
+            console.log("HERERREE")
             await axios.delete(
                 'https://fillq-333518.appspot.com/api/v1/pickems/' + userID, { withCredentials: true }
             ).catch(() => {
@@ -62,7 +63,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost)
+        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
         .then((res) => {
             if(res.status < 300) {
                 notify()
