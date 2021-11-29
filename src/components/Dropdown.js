@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom'
 const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
     const [userInfo, setUserInfo] = useState({})
     const location = useLocation();
-    const endPoint = "https://fillq-333518.appspot.com/api/v1/user/"
+    const endPoint = "http://localhost:8080/api/v1/user/"
     useEffect(() => {
         if(userID !== null) {
             const apiEndpoint = endPoint + userID
@@ -24,7 +24,7 @@ const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
                     }
                 )
         }
-    }, [setUserID, userID])
+    }, [])
 
     const accountAction = () => {
         if (userID === null) {

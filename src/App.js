@@ -18,7 +18,7 @@ import Spinner from './components/utils/Spinner';
 import Amplify, { Analytics } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
-
+// TODO: SPINNER FOR COMPONENTS
 function App({ hideLoader }) {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)

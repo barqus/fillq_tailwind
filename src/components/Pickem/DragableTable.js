@@ -18,7 +18,7 @@ const DragableTable = ({ participants }) => {
         setUserID(localStorage.getItem('twitchCode'))
         const fetchData = async () => {
             const result = await axios(
-                'https://fillq-333518.appspot.com/api/v1/pickems/' + localStorage.getItem('twitchCode')
+                'http://localhost:8080/api/v1/pickems/' + localStorage.getItem('twitchCode')
             ).catch(err => console.log(err));
             if (result !== undefined && result.data.length > 0) {
                 updatePlayers(result.data);
@@ -45,7 +45,7 @@ const DragableTable = ({ participants }) => {
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
-                'https://fillq-333518.appspot.com/api/v1/pickems/' + userID, { withCredentials: true }
+                'http://localhost:8080/api/v1/pickems/' + userID, { withCredentials: true }
             ).catch(() => {
                 notifyDeleteError()
                 return
@@ -62,84 +62,89 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
-        .then((res) => {
-            if(res.status < 300) {
-                notify()
-                setUserAlreadyPosted(true)
-            }
-        })
-        .catch((err) => {
-            console.log("ERR",err)
-            notifyError()
-        })
+        await axios.post('http://localhost:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+            .then((res) => {
+                if (res.status < 300) {
+                    notify()
+                    setUserAlreadyPosted(true)
+                }
+            })
+            .catch((err) => {
+                console.log("ERR", err)
+                notifyError()
+            })
     }
     return (
-        <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
-            FILLQ DALYVIŲ PICK'EMS
-            <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
-                <div className="bg-gray-900 mt-12 m-2 rounded-lg">
-                    <p>KAIP VEIKIA PICK'EMS</p>
-                    <p className="text-base text-justify m-4">
-                        I always felt like I could do anything. That’s the main
-                        thing people are controlled by! Thoughts- their perception
-                        of themselves! They're slowed down by their perception of
-                        themselves. If you're taught you can’t do anything, you
-                    </p>
-                    <p className="pt-4">PRIZAI</p>
-                    <p className="text-base text-justify m-4">
-                        I always felt like I could do anything. That’s the main
-                        thing people are controlled by! Thoughts- their perception
-                        of themselves! They're slowed down by their perception of
-                        themselves. If you're taught you can’t do anything, you
-                    </p>
-                    <hr className="mr-4 ml-4 mt-6" />
-                    <p className="pt-4 text-xl">PASIRINKTI LIKO LAIKO: 12H:30M:30S</p>
-                    {/* <hr className="m-auto" ></hr> */}
-                </div>
-                <div className="col-span-2 mt-12">
-                    <p>TAVO PICK'EMS</p>
-                    <DragDropContext onDragEnd={handleOnDragEnd}>
-                        <Droppable droppableId="players">
-                            {(provided) => (
-                                <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
-                                    {players.map(({ nickname }, index) => {
-                                        return (
-                                            <Draggable key={nickname} draggableId={nickname} index={index}>
-                                                {(provided) => (
-                                                    <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-                                                        className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
-                                                        ${(index + 1) === 1 ? "py-8 mt-1 border-4 text-4xl"
-                                                                : (index + 1) === 2 ? "py-4 border-2 text-3xl"
-                                                                    : (index + 1) === 3 ? "py-3 border-2 text-2xl"
-                                                                        : "py-2 text-base"}`}>
-                                                        <p className="text-white font-bold">
-                                                            {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
-                                                                : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
-                                                                    : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
-                                                            {index + 1}. {nickname}
-                                                        </p>
-                                                    </li>
-                                                )}
-                                            </Draggable>
-                                        );
-                                    })}
-                                    {provided.placeholder}
-                                </ul>
-                            )}
-                        </Droppable>
-                    </DragDropContext>
-                    {userID !== null &&
-                        <button onClick={() => savePickEms()}
-                            className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
-                            {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
-                        </button>}
+        <>
+            {participants.length > 0 &&
+                <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
+                    FILLQ DALYVIŲ PICK'EMS
+                    <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
+                        <div className="bg-gray-900 mt-12 m-2 rounded-lg">
+                            <p>KAIP VEIKIA PICK'EMS</p>
+                            <p className="text-base text-justify m-4">
+                                I always felt like I could do anything. That’s the main
+                                thing people are controlled by! Thoughts- their perception
+                                of themselves! They're slowed down by their perception of
+                                themselves. If you're taught you can’t do anything, you
+                            </p>
+                            <p className="pt-4">PRIZAI</p>
+                            <p className="text-base text-justify m-4">
+                                I always felt like I could do anything. That’s the main
+                                thing people are controlled by! Thoughts- their perception
+                                of themselves! They're slowed down by their perception of
+                                themselves. If you're taught you can’t do anything, you
+                            </p>
+                            <hr className="mr-4 ml-4 mt-6" />
+                            <p className="pt-4 text-xl">PASIRINKTI LIKO LAIKO: 12H:30M:30S</p>
+                            {/* <hr className="m-auto" ></hr> */}
+                        </div>
+                        <div className="col-span-2 mt-12">
+                            <p>TAVO PICK'EMS</p>
+                            <DragDropContext onDragEnd={handleOnDragEnd}>
+                                <Droppable droppableId="players">
+                                    {(provided) => (
+                                        <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
+                                            {players.map(({ nickname }, index) => {
+                                                return (
+                                                    <Draggable key={nickname} draggableId={nickname} index={index}>
+                                                        {(provided) => (
+                                                            <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                                className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
+                                                     ${(index + 1) === 1 ? "py-8 mt-1 border-4 text-4xl"
+                                                                        : (index + 1) === 2 ? "py-4 border-2 text-3xl"
+                                                                            : (index + 1) === 3 ? "py-3 border-2 text-2xl"
+                                                                                : "py-2 text-base"}`}>
+                                                                <p className="text-white font-bold">
+                                                                    {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
+                                                                        : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
+                                                                            : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
+                                                                    {index + 1}. {nickname}
+                                                                </p>
+                                                            </li>
+                                                        )}
+                                                    </Draggable>
+                                                );
+                                            })}
+                                            {provided.placeholder}
+                                        </ul>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
+                            {userID !== null &&
+                                <button onClick={() => savePickEms()}
+                                    className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
+                                    {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
+                                </button>}
 
-                </div>
+                        </div>
 
-            </div>
-            <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
-        </div>
+                    </div>
+                    <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
+                </div>
+            }
+        </>
+
     )
 }
 

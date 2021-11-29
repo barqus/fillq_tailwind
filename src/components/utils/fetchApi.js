@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const fetchDataCall = async ({ api }) => {
     let apiReturn = await axios
-        .get('https://fillq-333518.appspot.com/api/v1/'+api)
+        .get('http://localhost:8080/api/v1/'+api)
         .then(async function (response) {
             return response;
         })
