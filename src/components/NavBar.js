@@ -12,7 +12,7 @@ const NavBar = ({ toggle, userID, setUserID }) => {
     const location = useLocation();
     useEffect(() => {
         if (userID !== null) {
-            const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/participants/user/" + userID
+            const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/user/" + userID
             // TODO: ADD TRY CATCH HERE
             // TODO: FIX ALL LOCALHOST TO HOST
             // TODO: FIX API CALLS TO USE SAME FUNCTION FROM UTILS

@@ -11,7 +11,7 @@ const TwitchRedirect = ({ userID, setUserID }) => {
         console.log(twitchCode)
         const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
         
-        const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/participants/user/login/" + twitchCode
+        const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/user/login/" + twitchCode
         axios.get(apiEndpoint,{withCredentials: true, headers: {Authorization: `Bearer ${token}`} })
             .then(res => {
                 const twitchUserID = res.data;
