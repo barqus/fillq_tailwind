@@ -10,7 +10,7 @@ const TwitchRedirect = ({ userID, setUserID }) => {
         const twitchCode = new URLSearchParams(location.search).get("code")
         console.log(twitchCode)
         const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/user/login/" + twitchCode
-        axios.get(apiEndpoint,{withCredentials: true })
+        axios.get(apiEndpoint, {withCredentials: true })
             .then(res => {
                 const twitchUserID = res.data;
                 localStorage.setItem('twitchCode', twitchUserID);

@@ -16,13 +16,10 @@ const DragableTable = ({ participants }) => {
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
     useEffect(() => {
         setUserID(localStorage.getItem('twitchCode'))
-        const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
-        
         const fetchData = async () => {
             const result = await axios(
                 'https://fillq-333518.appspot.com/api/v1/pickems/' + localStorage.getItem('twitchCode')
             ).catch(err => console.log(err));
-            console.log("🚀 ~ file: DragableTable.js ~ line 19 ~ fetchData ~ result", result)
             if (result !== undefined && result.data.length > 0) {
                 updatePlayers(result.data);
                 setUserAlreadyPosted(true)
@@ -45,8 +42,6 @@ const DragableTable = ({ participants }) => {
         updatePlayers(items);
     }
     const savePickEms = async () => {
-        const token = "ya29.a0ARrdaM8JiGts1qxlF0c1ktmHY07FT1TJ-Hqen5E6OLCGammK53bbHwNg3Xn6wzCBOOvecR2CvzS7aAdeKpKSGsjNA2huRy4sPIlr_gCe9WkgrSUz5PVRRGNU5SOVcKBxWVvkmPthevtys9pPcjbhXJR7Btv8VvG0-9X_KcPWJlzQa0BRxpwCNguvHzcoQjJqLAoPamp4uqasWra0LWboAjEOA0wWMZoM4A"
-
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
@@ -67,7 +62,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost)
         .then((res) => {
             if(res.status < 300) {
                 notify()
