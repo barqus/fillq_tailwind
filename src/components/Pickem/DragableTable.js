@@ -18,7 +18,7 @@ const DragableTable = ({ participants }) => {
         setUserID(localStorage.getItem('twitchCode'))
         const fetchData = async () => {
             const result = await axios(
-                'http://localhost:8080/api/v1/pickems/' + localStorage.getItem('twitchCode')
+                'https://fillq-333518.appspot.com/api/v1/pickems/' + localStorage.getItem('twitchCode')
             ).catch(err => console.log(err));
             if (result !== undefined && result.data.length > 0) {
                 updatePlayers(result.data);
@@ -45,7 +45,7 @@ const DragableTable = ({ participants }) => {
         var objectToPost = []
         if (userAlreadyPosted) {
             await axios.delete(
-                'http://localhost:8080/api/v1/pickems/' + userID, { withCredentials: true }
+                'https://fillq-333518.appspot.com/api/v1/pickems/' + userID, { withCredentials: true }
             ).catch(() => {
                 notifyDeleteError()
                 return
@@ -62,7 +62,7 @@ const DragableTable = ({ participants }) => {
             )
         });
 
-        await axios.post('http://localhost:8080/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
+        await axios.post('https://fillq-333518.appspot.com/api/v1/pickems/' + userID, objectToPost, { withCredentials: true })
             .then((res) => {
                 if (res.status < 300) {
                     notify()

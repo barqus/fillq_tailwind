@@ -20,7 +20,7 @@ const PlayerModal = ({ setShowModal, participant }) => {
 
     useEffect(() => {
         // Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });
-        const apiEndpoint = "http://localhost:8080/api/v1/questions/" + participant.participant_id
+        const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/questions/" + participant.participant_id
         // TODO: ADD TRY CATCH HERE
         // TODO: FIX ALL LOCALHOST TO HOST
         // TODO: FIX API CALLS TO USE SAME FUNCTION FROM UTILS
