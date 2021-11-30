@@ -13,6 +13,7 @@
 
 .loader--hide {
   opacity: 0;
+  display: none;
 }
 
 @keyframes load8 {
