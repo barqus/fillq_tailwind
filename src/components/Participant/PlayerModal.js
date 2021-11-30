@@ -20,7 +20,7 @@ const PlayerModal = ({ setShowModal, participant }) => {
     const [imageLoaded, setImageLoaded] = useState(true)
 
     useEffect(() => {
-        // Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });
+        Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });
         const apiEndpoint = "https://fillq-333518.appspot.com/api/v1/questions/" + participant.participant_id
         // TODO: ADD TRY CATCH HERE
         // TODO: FIX ALL LOCALHOST TO HOST

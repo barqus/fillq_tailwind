@@ -109,10 +109,10 @@ const DragableTable = ({ participants }) => {
                             <p className="pb-4">PRIZAI</p>
                             <p className="text-base text-justify upper-case">
                                 <p className="">
-                                    • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" > SSD </a>  1TB M.2 PCIe<br />
-                                    • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" > RAM </a> <br />
+                                    • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" >SSD</a>  1TB M.2 PCIe<br />
+                                    • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" >RAM</a> <br />
                                     • PATRIOT VIPER PV380 HEADSET <br />
-                                    • NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" > DDR5 </a> <br />
+                                    • NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" >DDR5</a> <br />
                                 </p>
                                 <br />
                                 Prizus įsteigė Patriot Viper!
