@@ -6,6 +6,7 @@ import { GiTrophy } from 'react-icons/gi';
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import VIPERLogo from './VIPER.png'
 // TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
 const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
@@ -81,23 +82,43 @@ const DragableTable = ({ participants }) => {
                     FILLQ DALYVIŲ PICK'EMS
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg">
-                            <p>KAIP VEIKIA PICK'EMS</p>
-                            <p className="text-base text-justify m-4">
-                                I always felt like I could do anything. That’s the main
-                                thing people are controlled by! Thoughts- their perception
-                                of themselves! They're slowed down by their perception of
-                                themselves. If you're taught you can’t do anything, you
+                            <p className="text-lg text-justify m-4">
+                                <p className="text-xl">
+                                Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
+                                {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
+                                Spėk, kurią vietą užims dalyviai reitingų <a href="/" className="text-purple-500 cursor underline">lentelėje</a>!<br />
+                                </p>
+                                <hr className=" my-6" />
+                                Taškai skaičiuojami taip:
+                                <p className="ml-4 mt-2">
+                                1. Teisingai atspėta dalyvio vieta - 1 taškas.<br />
+                                2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
+                                4. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
+                                </p> <br/>
+                                Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00<br />
+                                Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
+
                             </p>
-                            <p className="pt-4">PRIZAI</p>
-                            <p className="text-base text-justify m-4">
-                                I always felt like I could do anything. That’s the main
-                                thing people are controlled by! Thoughts- their perception
-                                of themselves! They're slowed down by their perception of
-                                themselves. If you're taught you can’t do anything, you
+                            {/* <p className="text-base text-justify m-4">
+                                Spėk kokioje vietoje bus dalyviai po dviejų savaičių ir surink kuo daugiau tašku. Pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00
+
+                                Surinkai daugiausiai taškų? Laimėsi partnerių prizus.
+
+                            </p> */}
+                            <hr className=" my-6" />
+                            <p className="pb-4">PRIZAI</p>
+                            <p className="text-base text-justify upper-case">
+                                <p className="text-lg">
+                                    • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" > SSD </a>  1TB M.2 PCIe<br />
+                                    • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" > RAM </a> <br />
+                                    • PATRIOT VIPER PV380 HEADSET <br />
+                                    • NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" > DDR5 </a> <br />
+                                </p>
+                                <br />
+                                Prizus įsteigė Patriot Viper!
+                                Lyderiaujantys SSD, RAM ir periferijos gamintojai. Įsikūrę 1985 metais Amerikoje. Žaidėjams suteikiantys geriausią galios ir kainos santykį rinkoje.
+                                <img src={VIPERLogo} alt="viper logo" />
                             </p>
-                            <hr className="mr-4 ml-4 mt-6" />
-                            <p className="pt-4 text-xl">PASIRINKTI LIKO LAIKO: 12H:30M:30S</p>
-                            {/* <hr className="m-auto" ></hr> */}
                         </div>
                         <div className="col-span-2 mt-12">
                             <p>TAVO PICK'EMS</p>
