@@ -15,6 +15,7 @@ import Sponsors from './pages/SponsorPage.js';
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
+import Rules from './pages/Rules';
 import Amplify, { Analytics } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
@@ -66,7 +67,8 @@ function App({ hideLoader }) {
               <Route exact path="/" element={<Home />} />
               <Route path="/dalyviai" element={<Participants participants={participants} />} />
               <Route path="/pickems" element={<Pickems participants={participants} />} />
-              <Route path="/video" element={<Highlights />} />
+              {/* <Route path="/video" element={<Highlights />} /> */}
+              <Route path="/taisykles" element={<Rules />} />
               <Route path="/remejai" element={<Sponsors />} />
               <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} />
             </Routes>
@@ -80,3 +82,4 @@ function App({ hideLoader }) {
 }
 
 export default App;
+  
