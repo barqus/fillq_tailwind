@@ -12,6 +12,8 @@ const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
     const [userID, setUserID] = useState(0);
     const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     const notify = () => toast.success("IŠSAUGOTA!");
     const notifyError = () => toast.error("Nepavyko išsaugoti...");
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
@@ -31,6 +33,7 @@ const DragableTable = ({ participants }) => {
         };
 
         fetchData();
+        setIsLoading(true)
     }, [setUserID, updatePlayers, participants])
 
     function handleOnDragEnd(result) {
@@ -80,87 +83,93 @@ const DragableTable = ({ participants }) => {
             {participants.length > 0 &&
                 <div className="mt-12 text-center text-white text-2xl font-bold font-sans">
                     FILLQ DALYVIŲ PICK'EMS
-                    <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
-                        <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
-                            <p className="text-base text-justify m-4">
-                                <p className="">
-                                Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
-                                {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
-                                Spėk, kurią vietą užims dalyviai reitingų <a href="/" className="text-purple-500 cursor underline">lentelėje</a>!<br />
-                                </p>
-                                <hr className=" my-6" />
-                                Taškai skaičiuojami taip:
-                                <p className="ml-4 mt-2">
-                                1. Teisingai atspėta dalyvio vieta - 1 taškas.<br />
-                                2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
-                                4. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
-                                </p> <br/>
-                                Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00<br />
-                                Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
+                    {!isLoading ?
+                        <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
+                            <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
+                                <p className="text-base text-justify m-4">
+                                    <p className="">
+                                        Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
+                                        {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
+                                        Spėk, kurią vietą užims dalyviai reitingų <a href="/" className="text-purple-500 cursor underline">lentelėje</a>!<br />
+                                    </p>
+                                    <hr className=" my-6" />
+                                    Taškai skaičiuojami taip:
+                                    <p className="ml-4 mt-2">
+                                        1. Teisingai atspėta dalyvio vieta - 1 taškas.<br />
+                                        2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
+                                        4. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
+                                    </p> <br />
+                                    Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00<br />
+                                    Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
 
-                            </p>
-                            {/* <p className="text-base text-justify m-4">
+                                </p>
+                                {/* <p className="text-base text-justify m-4">
                                 Spėk kokioje vietoje bus dalyviai po dviejų savaičių ir surink kuo daugiau tašku. Pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00
 
                                 Surinkai daugiausiai taškų? Laimėsi partnerių prizus.
 
                             </p> */}
-                            <hr className=" my-6" />
-                            <p className="pb-4">PRIZAI</p>
-                            <p className="text-base text-justify upper-case">
-                                <p className="">
-                                    • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" >SSD</a>  1TB M.2 PCIe<br />
-                                    • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" >RAM</a> <br />
-                                    • PATRIOT VIPER PV380 HEADSET <br />
-                                    • NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" >DDR5</a> <br />
+                                <hr className=" my-6" />
+                                <p className="pb-4">PRIZAI</p>
+                                <p className="text-base text-justify upper-case">
+                                    <p className="">
+                                        • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" >SSD</a>  1TB M.2 PCIe<br />
+                                        • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" >RAM</a> <br />
+                                        • PATRIOT VIPER PV380 HEADSET <br />
+                                        • NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" >DDR5</a> <br />
+                                    </p>
+                                    <br />
+                                    Prizus įsteigė Patriot Viper!
+                                    Lyderiaujantys SSD, RAM ir periferijos gamintojai. Įsikūrę 1985 metais Amerikoje. Žaidėjams suteikiantys geriausią galios ir kainos santykį rinkoje.
+                                    <img src={VIPERLogo} alt="viper logo" />
                                 </p>
-                                <br />
-                                Prizus įsteigė Patriot Viper!
-                                Lyderiaujantys SSD, RAM ir periferijos gamintojai. Įsikūrę 1985 metais Amerikoje. Žaidėjams suteikiantys geriausią galios ir kainos santykį rinkoje.
-                                <img src={VIPERLogo} alt="viper logo" />
-                            </p>
-                        </div>
-                        <div className="col-span-2 mt-12">
-                            <p>TAVO PICK'EMS</p>
-                            <DragDropContext onDragEnd={handleOnDragEnd}>
-                                <Droppable droppableId="players">
-                                    {(provided) => (
-                                        <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
-                                            {players.map(({ nickname }, index) => {
-                                                return (
-                                                    <Draggable key={nickname} draggableId={nickname} index={index}>
-                                                        {(provided) => (
-                                                            <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-                                                                className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
+                            </div>
+                            <div className="col-span-2 mt-12">
+                                <p>TAVO PICK'EMS</p>
+                                <DragDropContext onDragEnd={handleOnDragEnd}>
+                                    <Droppable droppableId="players">
+                                        {(provided) => (
+                                            <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
+                                                {players.map(({ nickname }, index) => {
+                                                    return (
+                                                        <Draggable key={nickname} draggableId={nickname} index={index}>
+                                                            {(provided) => (
+                                                                <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                                    className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
                                                      ${(index + 1) === 1 ? "py-8 mt-1 border-4 text-4xl"
-                                                                        : (index + 1) === 2 ? "py-4 border-2 text-3xl"
-                                                                            : (index + 1) === 3 ? "py-3 border-2 text-2xl"
-                                                                                : "py-2 text-base"}`}>
-                                                                <p className="text-white font-bold">
-                                                                    {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
-                                                                        : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
-                                                                            : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
-                                                                    {index + 1}. {nickname}
-                                                                </p>
-                                                            </li>
-                                                        )}
-                                                    </Draggable>
-                                                );
-                                            })}
-                                            {provided.placeholder}
-                                        </ul>
-                                    )}
-                                </Droppable>
-                            </DragDropContext>
-                            {userID !== null &&
-                                <button onClick={() => savePickEms()}
-                                    className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
-                                    {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
-                                </button>}
+                                                                            : (index + 1) === 2 ? "py-4 border-2 text-3xl"
+                                                                                : (index + 1) === 3 ? "py-3 border-2 text-2xl"
+                                                                                    : "py-2 text-base"}`}>
+                                                                    <p className="text-white font-bold">
+                                                                        {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
+                                                                            : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
+                                                                                : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
+                                                                        {index + 1}. {nickname}
+                                                                    </p>
+                                                                </li>
+                                                            )}
+                                                        </Draggable>
+                                                    );
+                                                })}
+                                                {provided.placeholder}
+                                            </ul>
+                                        )}
+                                    </Droppable>
+                                </DragDropContext>
+                                {userID !== null &&
+                                    <button onClick={() => savePickEms()}
+                                        className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
+                                        {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
+                                    </button>
+                                    }
+
+                            </div>
 
                         </div>
+                        :
+                        <h1>"LOADING"</h1>
+                    }
 
-                    </div>
                     <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
                 </div>
             }

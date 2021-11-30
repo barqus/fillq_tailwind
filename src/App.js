@@ -59,7 +59,8 @@ function App({ hideLoader }) {
   }
   return (
     <div>
-      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
+    {!loading &&
+      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" onLoad={console.group()} style={{ backgroundImage: `url(${Background})` }} >
         <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
         <Layout>
           <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
@@ -76,7 +77,9 @@ function App({ hideLoader }) {
           </div>
         </Layout>
         <Footer />
-      </div>
+      </div>    
+    }
+
     </div>
 
   );

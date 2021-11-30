@@ -3,6 +3,7 @@ import PlayerBox from '../components/Participant/PlayerBox'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 const Participants = ({participants}) => {
+    // TODO: FIX THIS ONE
     // const [participants, setParticipants] = useState([])
     // useEffect(() => {
     //     const apiEndpoint = "https://fillq-333518.appspot.com/api/v1//participants/"
