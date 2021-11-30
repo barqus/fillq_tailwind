@@ -48,8 +48,8 @@ const PlayerModal = ({ setShowModal, participant }) => {
             <div
                 className="flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                 style={{ background: "linear-gradient(120deg,#722f818a 0%, rgba(3, 71, 57, 0.7) 100%)" }} >
-                <div className="relative w-12/12 my-6 mx-auto max-w-8xl">
-                    <div className="w-6xl mt-12 mb-12 border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
+                <div className="relative w-12/12 mt-12 mb-12 my-6 mx-auto max-w-8xl">
+                    <div className="w-6xl border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
                         <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t bg-gradient-to-r from-purple-800 to-green-500 ">
                             <h3 className="text-3xl font-semibold text-white">
                                 {participant.nickname}
