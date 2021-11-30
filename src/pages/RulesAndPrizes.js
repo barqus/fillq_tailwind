@@ -1,5 +1,7 @@
 import React from 'react'
 import Podium from '../components/Podium/Podium.js'
+import Amplify, { Analytics } from 'aws-amplify';
+Analytics.record({ name: 'RulesAndPrizes Visited' });
 
 const Rules = () => {
     return (

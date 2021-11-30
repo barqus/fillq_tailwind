@@ -13,10 +13,11 @@ const override = css`
   margin: 0 auto;
   border-color: red;
 `;
+
 Analytics.record({ name: 'PlayerModal visited' });
 const PlayerModal = ({ setShowModal, participant }) => {
     const [questions, setQuestions] = useState([])
-    const [imageLoaded, setImageLoaded] = useState(false)
+    const [imageLoaded, setImageLoaded] = useState(true)
 
     useEffect(() => {
         // Analytics.record({ name: 'PlayerModal visited: '+participant.nickname });

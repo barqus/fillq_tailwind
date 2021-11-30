@@ -78,12 +78,12 @@ const DragableTable = ({ participants }) => {
     return (
         <>
             {participants.length > 0 &&
-                <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
+                <div className="mt-12 text-center text-white text-2xl font-bold font-sans">
                     FILLQ DALYVIŲ PICK'EMS
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
-                        <div className="bg-gray-900 mt-12 m-2 rounded-lg">
-                            <p className="text-lg text-justify m-4">
-                                <p className="text-xl">
+                        <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
+                            <p className="text-base text-justify m-4">
+                                <p className="">
                                 Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
                                 {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
                                 Spėk, kurią vietą užims dalyviai reitingų <a href="/" className="text-purple-500 cursor underline">lentelėje</a>!<br />
@@ -108,7 +108,7 @@ const DragableTable = ({ participants }) => {
                             <hr className=" my-6" />
                             <p className="pb-4">PRIZAI</p>
                             <p className="text-base text-justify upper-case">
-                                <p className="text-lg">
+                                <p className="">
                                     • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" > SSD </a>  1TB M.2 PCIe<br />
                                     • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" > RAM </a> <br />
                                     • PATRIOT VIPER PV380 HEADSET <br />
