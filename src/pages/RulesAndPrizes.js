@@ -19,27 +19,37 @@ const Rules = () => {
                     <hr className=" my-6" />
                     <p className="text-3xl text-center ">PRIZAI</p>
                     <Podium />
-                    <div className="gird grid-rows-2 gap-10 text-center m-6">
+                    <div className="grid grid-rows-2 grid-cols-4 grid-flow-row text-left mt-6">
                         <div>
-                            <p >
-                                4. 100€ &nbsp;&nbsp;
-                                5. 75€ &nbsp;&nbsp;
-                                6. 65€ &nbsp;&nbsp;
-                                7. 55€
-                            </p>
+                            4. 100€
                         </div>
                         <div>
-                            <p>
-                                8. 45€ &nbsp;&nbsp;
-                                9. 35€ &nbsp;&nbsp;
-                                10. 25€ 
-                            </p>
+                            5. 75€
+                        </div>
+                        <div>
+                            6. 65€
+                        </div>
+                        6. 65€
+                        <div>
+                            7. 55€
+                        </div>
+                        <div>
+                            8. 45€
+                        </div>
+                        <div>
+                            9. 35€
+                        </div>
+                        <div>
+                            10. 25€
                         </div>
                     </div>
-                    Vienas dalyvis gaus 100€ bonus
                 </div>
-            </div>
-        </div>
+                <p className="text-xl">
+                    Vienas dalyvis gaus 100€ bonus
+                </p>
+
+            </div >
+        </div >
     )
 }
 

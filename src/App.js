@@ -19,6 +19,8 @@ import Rules from './pages/RulesAndPrizes';
 import Amplify, { Analytics } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
+// TODO FIX PRESSING ON TEXT
+// TOOD: REMOVE NOT NEEDED PAGES FROM DROPDOWN
 // TODO: SPINNER FOR COMPONENTS
 function App({ hideLoader }) {
   const [isOpen, setIsOpen] = useState(false)
