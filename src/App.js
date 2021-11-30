@@ -15,7 +15,7 @@ import Sponsors from './pages/SponsorPage.js';
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
-import Rules from './pages/Rules';
+import Rules from './pages/RulesAndPrizes';
 import Amplify, { Analytics } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
