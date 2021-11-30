@@ -12,7 +12,7 @@ const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
     const [userID, setUserID] = useState(0);
     const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const notify = () => toast.success("IŠSAUGOTA!");
     const notifyError = () => toast.error("Nepavyko išsaugoti...");
@@ -33,7 +33,7 @@ const DragableTable = ({ participants }) => {
         };
 
         fetchData();
-        setIsLoading(true)
+        setIsLoading(false)
     }, [setUserID, updatePlayers, participants])
 
     function handleOnDragEnd(result) {
