@@ -14,6 +14,7 @@ const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
     const [userID, setUserID] = useState(0);
     const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
+    const [loading, setLoading] = useState(true);
     const notify = () => toast.success("IŠSAUGOTA!");
     const notifyError = () => toast.error("Nepavyko išsaugoti...");
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
@@ -33,6 +34,7 @@ const DragableTable = ({ participants }) => {
         };
 
         fetchData();
+        setLoading(false);
     }, [setUserID, updatePlayers, participants])
 
     function handleOnDragEnd(result) {
@@ -112,9 +114,9 @@ const DragableTable = ({ participants }) => {
                             <p className="text-base text-justify upper-case">
                                 <p className="">
                                     • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" >SSD</a>  1TB M.2 PCIe<br />
-                                    <img src={ssdjpg}  alt="SSD"/>
+                                    <img src={ssdjpg} alt="SSD" />
                                     • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" >RAM</a> <br />
-                                    <img src={ramjpg}  alt="RAM"/>
+                                    <img src={ramjpg} alt="RAM" />
                                     • PATRIOT VIPER PV380 HEADSET <br />
                                 </p>
                                 <br />
@@ -128,36 +130,39 @@ const DragableTable = ({ participants }) => {
                         </div>
                         <div className="col-span-2 mt-12">
                             <p>TAVO PICK'EMS</p>
-                            <DragDropContext onDragEnd={handleOnDragEnd}>
-                                <Droppable droppableId="players">
-                                    {(provided) => (
-                                        <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
-                                            {players.map(({ nickname }, index) => {
-                                                return (
-                                                    <Draggable key={nickname} draggableId={nickname} index={index}>
-                                                        {(provided) => (
-                                                            <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-                                                                className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
+                            {loading ? "kraunama..." :
+                                <DragDropContext onDragEnd={handleOnDragEnd}>
+                                    <Droppable droppableId="players">
+                                        {(provided) => (
+                                            <ul className="characters mt-4" {...provided.droppableProps} ref={provided.innerRef}>
+                                                {players.map(({ nickname }, index) => {
+                                                    return (
+                                                        <Draggable key={nickname} draggableId={nickname} index={index}>
+                                                            {(provided) => (
+                                                                <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                                    className={`mb-2 flex items-center bg-gradient-to-r from-purple-800 to-green-500 px-4 rounded-lg
                                                      ${(index + 1) === 1 ? "py-8 mt-1 border-4 text-4xl"
-                                                                        : (index + 1) === 2 ? "py-4 border-2 text-3xl"
-                                                                            : (index + 1) === 3 ? "py-3 border-2 text-2xl"
-                                                                                : "py-2 text-base"}`}>
-                                                                <p className="text-white font-bold">
-                                                                    {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
-                                                                        : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
-                                                                            : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
-                                                                    {index + 1}. {nickname}
-                                                                </p>
-                                                            </li>
-                                                        )}
-                                                    </Draggable>
-                                                );
-                                            })}
-                                            {provided.placeholder}
-                                        </ul>
-                                    )}
-                                </Droppable>
-                            </DragDropContext>
+                                                                            : (index + 1) === 2 ? "py-4 border-2 text-3xl"
+                                                                                : (index + 1) === 3 ? "py-3 border-2 text-2xl"
+                                                                                    : "py-2 text-base"}`}>
+                                                                    <p className="text-white font-bold">
+                                                                        {(index + 1) === 1 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#FFD700" }} />
+                                                                            : (index + 1) === 2 ? <GiTrophy className="inline mb-1 mr-2" style={{ color: "#C0C0C0" }} />
+                                                                                : (index + 1) === 3 && <GiTrophy className="inline mb-1 mr-2" style={{ color: "#CD7F32" }} />}
+                                                                        {index + 1}. {nickname}
+                                                                    </p>
+                                                                </li>
+                                                            )}
+                                                        </Draggable>
+                                                    );
+                                                })}
+                                                {provided.placeholder}
+                                            </ul>
+                                        )}
+                                    </Droppable>
+                                </DragDropContext>
+                            }
+
                             {userID !== null &&
                                 <button onClick={() => savePickEms()}
                                     className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
