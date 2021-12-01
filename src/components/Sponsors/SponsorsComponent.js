@@ -4,12 +4,14 @@ import ViperLogo from './PNGS/VIPER.png'
 import ZyroLogo from './PNGS/Zyro Logo White.png'
 import SurfsharkLogo from './PNGS/SurfsharkLogo.png'
 import Tuta from './PNGS/TUTA.png'
+import Wolt from './PNGS/WOLT.png'
+import CandyPop from './PNGS/CANDY POP.png'
 const SponsorsComponent = () => {
     return (
         <div className="grid justify-center mb-12  mt-12 text-center text-white text-xl font-bold font-sans">
             FILLQ INFORMACIJA
             <div className="bg-gray-900 mt-6 pr-4 pl-4 rounded-xl w-auto">
-                <div className="grid grid-rows-2 p-6 grid-cols-3 grid-flow-rows text-left mt-6">
+                <div className="grid grid-rows-2 p-6 grid-cols-3 gap-10 grid-flow-rows text-left mt-6">
                     <div>
                         <img src={TCLogo} alt="logo" />
                     </div>
@@ -23,7 +25,7 @@ const SponsorsComponent = () => {
                         Lyderiaujantys SSD, RAM ir periferijos gamintojai. Įsikūrę 1985 metais Amerikoje. Žaidėjams suteikiantys geriausią galios ir kainos santykį rinkoje. (Hyperlink https://viper.patriotmemory.com)
                     </div>
                     <div>
-                        4. 100€
+                        <img src={Wolt} className="h-20" alt="logo" />
                     </div>
                     <div className="col-span-2">
                         Su Wolt neįtikėtinai lengvai atrasi ir gausi tai, ko nori. Puikių restoranų meniu, maisto prekės ir viskas, ko tau gali prireikti bus pristatyta - greitai, patikimai ir už prieinamą kainą.
@@ -50,14 +52,12 @@ const SponsorsComponent = () => {
                         Susisiek su Tūta, jie profesionaliai patars ir padės visais klausimais.
                         Iron Wolves komanda naudoja išskirtinai tik Tūtos esports marškinėlius!
                     </div>
-
-
-                    <div>
-                        4. 100€
+                    {/* <div>
+                        <img src={CandyPop} alt="logo" />
                     </div>
                     <div className="col-span-2">
                         CANDYPOP
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div >

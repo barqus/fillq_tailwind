@@ -70,7 +70,7 @@ function App({ hideLoader }) {
               <Route path="/pickems" element={<Pickems participants={participants} />} />
               {/* <Route path="/video" element={<Highlights />} /> */}
               <Route path="/taisykles" element={<Rules />} />
-              <Route path="/remejai" element={<Sponsors />} />
+              {/* <Route path="/remejai" element={<Sponsors />} /> */}
               <Route path="/twitchRedirect" element={<TwitchRedirect userID={userID} setUserID={setUserID} />} />
             </Routes>
           </div>
