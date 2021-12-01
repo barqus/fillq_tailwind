@@ -31,45 +31,34 @@ function App({ hideLoader }) {
   }
 
   useEffect(() => {
-    // const hideMenu = () => {
-    //   if (window.innerWidth > 768 && isOpen) {
-    //     setIsOpen(false)
-    //   }
-    // }
+    const hideMenu = () => {
+      if (window.innerWidth > 768 && isOpen) {
+        setIsOpen(false)
+      }
+    }
 
-    // const fetchData = async api => {
-    //   let response = await fetchDataCall({ api: api });
-    //   if (response !== undefined) {
-    //     setParticipants(response.data);
-    //   }
+    const fetchData = async api => {
+      let response = await fetchDataCall({ api: api });
+      if (response !== undefined) {
+        setParticipants(response.data);
+      }
 
-    // };
-    // fetchData('participants/');
+    };
+    fetchData('participants/');
 
-    // window.addEventListener('resize', hideMenu)
-    // setUserID(localStorage.getItem('twitchCode'))
-
-    setLoading(false)
-    
+    window.addEventListener('resize', hideMenu)
+    setUserID(localStorage.getItem('twitchCode'))
   }, [])
-  // TODO: IMPLEMENT AWS CLOUDWATCH?
-  // TODO: ADD LOGO IN WEBS HEAD
-  if (loading) {
-    return null;
-  }
-
   const loadingDone = () => {
-    console.log("GWRWERER")
-
+    setLoading(false)
     hideLoader()
-        
   }
   //  {/* <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} > */}
   return (
     <div className="main_div">
-    {!loading &&
-      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
-      <img src={Background} className="image_background" alt="backgroud" onLoad={hideLoader()}/>
+    <img src={Background} className="image_background" alt="backgroud" onLoad={() => loadingDone()}/>
+    {!loading ?
+      <div className="" >
         <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
         <Layout>
           <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
@@ -87,6 +76,7 @@ function App({ hideLoader }) {
         </Layout>
         <Footer />
       </div>    
+      : <h1>"LOADING..."</h1>
     }
 
     </div>
