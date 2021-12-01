@@ -8,8 +8,8 @@ import Wolt from './PNGS/WOLT.png'
 import CandyPop from './PNGS/CANDY POP.png'
 const SponsorsComponent = () => {
     return (
-        <div className=" inline-grid justify-center mb-12  mt-12 break-normal text-white text-xl font-bold font-sans">
-            <div className="bg-gray-900 mt-6 pr-4 pl-4 rounded-xl w-auto">
+        <div className=" inline-grid justify-center mb-12  break-normal text-white text-xl font-bold font-sans">
+            <div className="bg-gray-900 mt-6 pr-4 pl-4 rounded-xl w-auto border-4 border-purple-400">
                 <div className="grid grid-rows-2 p-6 grid-cols-3 gap-12 grid-flow-rows text-left mt-6">
                     <div className="flex justify-center items-center">
                         <img src={TCLogo} alt="logo" className="cursor-pointer" onClick={() => {window.open("https://www.topocentras.lt/", "_blank")}} />
@@ -35,14 +35,14 @@ const SponsorsComponent = () => {
                         <img src={ZyroLogo} alt="logo" className="h-20 cursor-pointer" onClick={() => {window.open("https://zyro.com/lt/special/fillq", "_blank")}}/>
                     </div>
                     <div className="col-span-2 text-justify">
-                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <a href="https://zyro.com/lt/special/fillq" className="underline cursor-pointer">FILLQ</a>.
+                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <p onClick={() => {window.open("https://zyro.com/lt/special/fillq", "_blank")}} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p>.
                     </div>
 
                     <div className="flex justify-center items-center">
                         <img src={SurfsharkLogo} alt="logo" className="h-20 cursor-pointer" onClick={() => {window.open("https://surfshark.deals/FILLQ", "_blank")}}/>
                     </div>
                     <div className="col-span-2 text-justify">
-                        Po visų duomenų nesaugumo skandalų būtų nuodėmė naršyti internete be VPN. Gera žinia ta, kad Surfshark paruošė jums labai gerą deal‘ą. Naudok kodą FILLQ(https://surfshark.deals/FILLQ) ir gauk 83% nuolaidą bei nemokamai net keturis papildomus mėnesius.
+                        Po visų duomenų nesaugumo skandalų būtų nuodėmė naršyti internete be VPN. Gera žinia ta, kad Surfshark paruošė jums labai gerą deal‘ą. Naudok kodą <p onClick={() => {window.open("https://surfshark.deals/FILLQ", "_blank")}} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p> ir gauk 72% nuolaidą bei nemokamai net keturis papildomus mėnesius.
                     </div>
                     <div className="flex justify-center items-center">
                         <img src={Tuta} alt="logo" className="h-20 cursor-pointer" onClick={() => {window.open("https://tuta.lt/", "_blank")}}/>
