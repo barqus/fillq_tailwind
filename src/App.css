@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.main_div {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.image_background {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

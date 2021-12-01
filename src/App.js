@@ -49,7 +49,7 @@ function App({ hideLoader }) {
     window.addEventListener('resize', hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
 
-    hideLoader()
+ 
     setLoading(false)
   }, [])
   // TODO: IMPLEMENT AWS CLOUDWATCH?
@@ -57,10 +57,12 @@ function App({ hideLoader }) {
   if (loading) {
     return null;
   }
+  //  {/* <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} > */}
   return (
-    <div>
+    <div className="main_div">
+    <img src={Background} className="image_background" alt="backgroud" onLoad={() => hideLoader()}/>
     {!loading &&
-      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" onLoad={console.group()} style={{ backgroundImage: `url(${Background})` }} >
+      <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
         <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
         <Layout>
           <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
