@@ -27,11 +27,11 @@ const DragableTable = ({ participants }) => {
             if (result !== undefined && result.data.length > 0) {
                 updatePlayers(result.data);
                 setUserAlreadyPosted(true)
-                setLoading(false);
             }
             else {
                 updatePlayers(participants)
             }
+            setLoading(false);
         };
         fetchData();
     }, [setUserID, updatePlayers, participants, userID])
