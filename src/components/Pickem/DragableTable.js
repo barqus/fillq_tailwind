@@ -129,9 +129,7 @@ const DragableTable = ({ participants }) => {
                         </div>
                         <div className="col-span-2 mt-12">
                             <p>TAVO PICK'EMS</p>
-                            {loading ? <p className="text-center mt-2 text-xl">
-                                    NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" >DDR5</a>
-                                </p>  :
+                            {loading ? <p className="text-center mt-2 text-xl">KRAUNAMA...</p>  :
                                 <DragDropContext onDragEnd={handleOnDragEnd}>
                                     <Droppable droppableId="players">
                                         {(provided) => (
