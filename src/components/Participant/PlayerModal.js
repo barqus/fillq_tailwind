@@ -46,7 +46,7 @@ const PlayerModal = ({ setShowModal, participant }) => {
         <>
         {questions.length > 0 &&
             <div
-                className="flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none mt-12 mb-12"
+                className="flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                 style={{ background: "linear-gradient(120deg,#722f818a 0%, rgba(3, 71, 57, 0.7) 100%)" }} >
                 <div className="relative w-12/12 mt-12 mb-12 my-6 mx-auto max-w-8xl">
                     <div className="w-6xl border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
