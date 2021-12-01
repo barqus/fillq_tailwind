@@ -31,25 +31,25 @@ function App({ hideLoader }) {
   }
 
   useEffect(() => {
-    const hideMenu = () => {
-      if (window.innerWidth > 768 && isOpen) {
-        setIsOpen(false)
-      }
-    }
+    // const hideMenu = () => {
+    //   if (window.innerWidth > 768 && isOpen) {
+    //     setIsOpen(false)
+    //   }
+    // }
 
-    const fetchData = async api => {
-      let response = await fetchDataCall({ api: api });
-      if (response !== undefined) {
-        setParticipants(response.data);
-      }
+    // const fetchData = async api => {
+    //   let response = await fetchDataCall({ api: api });
+    //   if (response !== undefined) {
+    //     setParticipants(response.data);
+    //   }
 
-    };
-    fetchData('participants/');
+    // };
+    // fetchData('participants/');
 
-    window.addEventListener('resize', hideMenu)
-    setUserID(localStorage.getItem('twitchCode'))
+    // window.addEventListener('resize', hideMenu)
+    // setUserID(localStorage.getItem('twitchCode'))
 
- 
+    setLoading(false)
     
   }, [])
   // TODO: IMPLEMENT AWS CLOUDWATCH?
@@ -59,14 +59,15 @@ function App({ hideLoader }) {
   }
 
   const loadingDone = () => {
+    console.log("GWRWERER")
 
     hideLoader()
-    setLoading(false)
+        
   }
   //  {/* <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} > */}
   return (
     <div className="main_div">
-    <img src={Background} className="image_background" alt="backgroud" onLoad={() => loadingDone()}/>
+    <img src={Background} className="image_background" alt="backgroud" onLoad={hideLoader()}/>
     {!loading &&
       <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
         <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
