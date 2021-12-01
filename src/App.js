@@ -50,17 +50,23 @@ function App({ hideLoader }) {
     setUserID(localStorage.getItem('twitchCode'))
 
  
-    setLoading(false)
+    
   }, [])
   // TODO: IMPLEMENT AWS CLOUDWATCH?
   // TODO: ADD LOGO IN WEBS HEAD
   if (loading) {
     return null;
   }
+
+  const loadingDone = () => {
+
+    hideLoader()
+    setLoading(false)
+  }
   //  {/* <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} > */}
   return (
     <div className="main_div">
-    <img src={Background} className="image_background" alt="backgroud" onLoad={() => hideLoader()}/>
+    <img src={Background} className="image_background" alt="backgroud" onLoad={() => loadingDone()}/>
     {!loading &&
       <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} >
         <NavBar toggle={toggle} userID={userID} setUserID={setUserID} />
