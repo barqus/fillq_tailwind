@@ -96,7 +96,7 @@ const DragableTable = ({ participants }) => {
                                 <p className="ml-4 mt-2">
                                     1. Teisingai atspėta dalyvio vieta - 1 taškas.<br />
                                     2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
-                                    4. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
+                                    3. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
                                 </p> <br />
                                 Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00<br />
                                 Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />

@@ -50,8 +50,9 @@ function App({ hideLoader }) {
     setUserID(localStorage.getItem('twitchCode'))
   }, [])
   const loadingDone = () => {
-    setLoading(false)
     hideLoader()
+    setLoading(false)
+
   }
   //  {/* <div className=" bg-cover bg-no-repeat bg-center bg-fixed" style={{ backgroundImage: `url(${Background})` }} > */}
   return (
