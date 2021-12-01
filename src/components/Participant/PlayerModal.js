@@ -17,7 +17,7 @@ const override = css`
 `;
 
 Analytics.record({ name: 'PlayerModal visited' });
-const PlayerModal = ({ setShowModal, participant,setLoading }) => {
+const PlayerModal = ({ setShowModal, participant }) => {
     const [questions, setQuestions] = useState([])
     const [imageLoaded, setImageLoaded] = useState(true)
 
@@ -38,7 +38,6 @@ const PlayerModal = ({ setShowModal, participant,setLoading }) => {
                     console.log("err")
                 }
             )
-        
     }, [])
     const wrapperRef = useRef(null);
     useOutsideAlerter(wrapperRef, setShowModal);
@@ -75,7 +74,7 @@ const PlayerModal = ({ setShowModal, participant,setLoading }) => {
                                     <div className="">
 
                                         <img style={imageLoaded ? {} : { display: 'none' }} className="border-2 border-purple-400 border-opacity-60 filter drop-shadow-2xl object-cover mt-5 w-60 h-60 inline rounded-lg"
-                                            src={participant.description} width="500px" alt="dalyvis" loading="lazy" onLoad={() => setLoading(false)} />
+                                            src={participant.description} width="500px" alt="dalyvis" loading="lazy" onLoad={() => setImageLoaded(true)} />
                                         <p className="mt-4 mb-2 text-purple-400">{participant.name}</p>
                                         <p className="my-2 text-purple-400">{participant.surname}</p>
                                         <div className="text-base mt-6">
