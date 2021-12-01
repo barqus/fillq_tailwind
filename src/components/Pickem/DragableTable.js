@@ -31,9 +31,9 @@ const DragableTable = ({ participants }) => {
             else {
                 updatePlayers(participants)
             }
-            setLoading(false);
         };
         fetchData();
+        setLoading(false);
     }, [setUserID, updatePlayers, participants, userID])
 
     function handleOnDragEnd(result) {
@@ -89,7 +89,7 @@ const DragableTable = ({ participants }) => {
                                 <p className="">
                                     Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
                                     {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
-                                    Spėk, kurią vietą užims dalyviai reitingų <a href="/" className="text-purple-500 cursor underline">lentelėje</a>!<br />
+                                    Spėk, kurią vietą užims dalyviai reitingų lentelėje!<br />
                                 </p>
                                 <hr className=" my-6" />
                                 Taškai skaičiuojami taip:
