@@ -34,7 +34,7 @@ const DragableTable = ({ participants }) => {
             }
         };
         fetchData();
-    }, [setUserID, updatePlayers, participants])
+    }, [setUserID, updatePlayers, participants, userID])
 
     function handleOnDragEnd(result) {
         if (!result.destination) return;
