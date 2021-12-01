@@ -29,7 +29,7 @@ const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
     const accountAction = () => {
         if (userID === null) {
             const REACT_APP_TWITCH_CLIENT_ID="by7zl6rwazu7ks1z6sby63bnwq1267"
-            const REACT_APP_TWITCH_REDIRECT_URI = "https://master.dtk76o5bnxc81.amplifyapp.com/twitchRedirect"
+            const REACT_APP_TWITCH_REDIRECT_URI = "https://fillq.lt/twitchRedirect"
             var twitchLoginURI = `https://id.twitch.tv/oauth2/authorize?client_id=${REACT_APP_TWITCH_CLIENT_ID}&response_type=code&scope=user:read:email&redirect_uri=${REACT_APP_TWITCH_REDIRECT_URI}`
             window.location.href = twitchLoginURI
         }
@@ -42,9 +42,10 @@ const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
         <div className={isOpen ? 'grid grid-rows-6 text-center items-center bg text-white font-sans font-bold text-lg' : 'hidden'}  onClick={toggle}
         style={{background: "linear-gradient(120deg,#722f818a 0%, rgba(3, 71, 57, 1) 100%)"}}>
             <NavLink to="/dalyviai" className={location.pathname === "/dalyviai" ? " text-purple-500 hover"  : " hover:text-purple-400"}>DALYVIAI</NavLink>
+            {/* <NavLink to="/video" className="p-4 hover:text-purple-400"><span className={location.pathname === "/video" ? " text-purple-500" : ""}>HIGHLIGHTS</span></NavLink> */}
             <NavLink to="/pickems" className={location.pathname === "/pickems" ? " text-purple-500"  : " hover:text-purple-400"}>PICK'EM</NavLink>
             <NavLink to="/taisykles" className={location.pathname === "/taisykles" ? " text-purple-500 "  : "hover:text-purple-400"}>TAISYKLĖS</NavLink>
-            {/* <NavLink to="/remejai" className={location.pathname === "/remejai" ? " text-purple-500"  : " hover:text-purple-400"}>REMĖJAI</NavLink> */}
+            <NavLink to="/remejai" className={location.pathname === "/remejai" ? " text-purple-500"  : " hover:text-purple-400"}>REMĖJAI</NavLink>
             <button onClick={() => accountAction()} className="bg-transparent hover:bg-purple-400 text-purple-400 font-semibold hover:text-white  border border-purple-400 hover:border-transparent rounded" >
                 <div className="text-lg">
                     {userID === null ? <>PRISIJUNGTI <FaTwitch className="inline"/></> : 
