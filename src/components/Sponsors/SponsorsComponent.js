@@ -10,13 +10,12 @@ const SponsorsComponent = () => {
     return (
         <div className=" inline-grid justify-center mb-12  mt-12 break-normal text-white text-xl font-bold font-sans">
             <div className="bg-gray-900 mt-6 pr-4 pl-4 rounded-xl w-auto">
-                <div className="grid grid-rows-2 p-6 grid-cols-3 gap-10 grid-flow-rows text-left mt-6">
+                <div className="grid grid-rows-2 p-6 grid-cols-3 gap-12 grid-flow-rows text-left mt-6">
                     <div className="flex justify-center items-center">
                         <img src={TCLogo} alt="logo" className="cursor-pointer" onClick={() => {window.open("https://www.topocentras.lt/", "_blank")}} />
                     </div>
                     <div className="col-span-2 text-justify">
                         Nori atsinaujinti savo įrangą ir pakelti savo lygį? Topo Centre rasi viską ko tau reikia. Nuo pilnai sukomplektuoto kompiuterio, iki naujos mechaninės klaviatūros.
-                        <hr />
                     </div>  
                     
                     <div className="flex justify-center items-center">
@@ -33,10 +32,10 @@ const SponsorsComponent = () => {
                         Su Wolt neįtikėtinai lengvai atrasi ir gausi tai, ko nori. Puikių restoranų meniu, maisto prekės ir viskas, ko tau gali prireikti bus pristatyta - greitai, patikimai ir už prieinamą kainą.
                     </div>
                     <div className="flex justify-center items-center">
-                        <img src={ZyroLogo} alt="logo" className="h-20 cursor-pointer" onClick={() => {window.open("https://zyro.com/lt", "_blank")}}/>
+                        <img src={ZyroLogo} alt="logo" className="h-20 cursor-pointer" onClick={() => {window.open("https://zyro.com/lt/special/fillq", "_blank")}}/>
                     </div>
                     <div className="col-span-2 text-justify">
-                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu FILLQ. (Nuoroda)
+                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <a href="https://zyro.com/lt/special/fillq" className="underline cursor-pointer">FILLQ</a>.
                     </div>
 
                     <div className="flex justify-center items-center">
