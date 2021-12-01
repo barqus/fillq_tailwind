@@ -8,7 +8,7 @@ const Podium = () => {
                 <div>
                     300€
                 </div>
-                <div id="second-step" className="bg-silver step centerBoth podium-number">
+                <div id="second-step" className="bg-silver border-2 step centerBoth podium-number bg-gradient-to-r from-purple-800 to-green-500 ">
                     
                 </div>
             </div>
@@ -16,7 +16,7 @@ const Podium = () => {
                 <div>
                     500€
                 </div>
-                <div id="first-step" className="bg-gold step centerBoth podium-number">
+                <div id="first-step" className="bg-gold step border-2 centerBoth podium-number bg-gradient-to-r from-purple-800 to-green-500 ">
                     
                 </div>
             </div>
@@ -24,7 +24,7 @@ const Podium = () => {
                 <div>
                     200€
                 </div>
-                <div id="third-step" className="bg-bronze step centerBoth podium-number">
+                <div id="third-step" className="bg-bronze step border-2 centerBoth podium-number bg-gradient-to-r from-purple-800 to-green-500 ">
                     
                 </div>
             </div>

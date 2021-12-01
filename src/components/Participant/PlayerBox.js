@@ -5,6 +5,7 @@ import PlayerModal from './PlayerModal';
 const PlayerBox = ({participant}) => {
     const [isHovered, setIsHovered] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [loading, setLoading] = useState()
     return (
         <>
             <div className="border-2 border-purple-500 w-56 h-28 text-center m-8 rounded-lg text-white hover:text-purple-400 cursor-pointer
@@ -16,7 +17,8 @@ const PlayerBox = ({participant}) => {
                 }}>
                 <span className={isHovered ? `text-2xl` : `text-xl`}>{participant.nickname}</span>
             </div>
-            { showModal ? <PlayerModal setShowModal={setShowModal} participant={participant} /> : ""}
+            { showModal ? loading ? null : <PlayerModal setShowModal={setShowModal} participant={participant} setLoading={setLoading}/>  : ""}
+            
         </>
     )
 }
