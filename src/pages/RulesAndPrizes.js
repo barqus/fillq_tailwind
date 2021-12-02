@@ -31,7 +31,6 @@ const Rules = () => {
                         <div>
                             6. 65€
                         </div>
-                        6. 65€
                         <div>
                             7. 55€
                         </div>
