@@ -35,7 +35,7 @@ const SponsorsComponent = () => {
                         <img src={ZyroLogo} alt="logo" className="cursor-pointer" onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} />
                     </div>
                     <div className="col-span-2 text-justify mb-12">
-                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <p onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ ir gauk 72% nuolaidą</p>.
+                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 72% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <p onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p>.
                     </div>
 
                     <div className="flex justify-center items-center mb-6">
