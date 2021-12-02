@@ -77,7 +77,7 @@ function App({ hideLoader }) {
         </Layout>
         <Footer />
       </div>    
-      : <h1>"LOADING..."</h1>
+      : null
     }
 
     </div>
