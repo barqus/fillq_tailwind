@@ -6,6 +6,7 @@ import SurfsharkLogo from './Sponsors/PNGS/SurfsharkLogo.png'
 import Tuta from './Sponsors/PNGS/TUTA.png'
 import Wolt from './Sponsors/PNGS/WOLT.png'
 import Razer from './Sponsors/PNGS/razer.png'
+import CandyPop from './Sponsors/PNGS/CANDY POP.png'
 const Layout = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col  justify-center items-center  ">
@@ -18,7 +19,8 @@ const Layout = ({ children }) => {
                     <img src={Tuta} className="m-auto mt-12 max-h-10" alt="topo centras" />
                     <img src={ZyroLogo} className="m-auto mt-12 max-h-10" alt="topo centras" />
                     <img src={Wolt} className="m-auto mt-12 max-h-10" alt="topo centras" />
-                    <img src={Razer} className="m-auto mt-12 max-h-10" alt="topo centras" />
+                    <img src={Razer} className="m-auto mt-12 max-h-16" alt="topo centras" />
+                    <img src={CandyPop} className="m-auto mt-12 max-h-14" alt="topo centras" />
                 </div>
 
             </main>
