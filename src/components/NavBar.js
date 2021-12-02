@@ -63,7 +63,7 @@ const NavBar = ({ toggle, userID, setUserID }) => {
                 <NavLink to="/pickems" className="p-4 hover:text-purple-400"> <span className={location.pathname === "/pickems" ? " text-purple-500" : ""}>PICK'EM</span></NavLink>
                 {/* <NavLink to="/video" className="p-4 hover:text-purple-400"><span className={location.pathname === "/video" ? " text-purple-500" : ""}>HIGHLIGHTS</span></NavLink> */}
                 <NavLink to="/taisykles" className="p-4 hover:text-purple-400"><span className={location.pathname === "/taisykles" ? " text-purple-500" : ""}>TAISYKLĖS</span></NavLink>
-                <NavLink to="/remejai" className="p-4 hover:text-purple-400"><span className={location.pathname === "/remejai" ? " text-purple-500" : ""}>REMĖJAI</span></NavLink>
+                <NavLink to="/remejai" className="p-4 hover:text-purple-400"><span className={location.pathname === "/remejai" ? " text-purple-500" : ""}>RĖMĖJAI</span></NavLink>
                 <button onClick={() => accountAction()} className="bg-transparent hover:bg-purple-400 text-purple-400 font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
                     <div className="text-lg">
                         {userID === null ? <>PRISIJUNGTI <FaTwitch className="inline" /></> :

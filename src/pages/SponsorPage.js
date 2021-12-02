@@ -6,7 +6,7 @@ Analytics.record({ name: 'Sponsors Visited' });
 const Sponsors = () => {
     return (
         <div className="grid justify-center mt-12 text-center text-white text-3xl font-bold font-sans">
-            FILLQ REMĖJAI
+            FILLQ RĖMĖJAI
             <SponsorsComponent />
         </div>
     )

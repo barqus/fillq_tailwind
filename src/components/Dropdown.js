@@ -45,7 +45,7 @@ const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
             {/* <NavLink to="/video" className="p-4 hover:text-purple-400"><span className={location.pathname === "/video" ? " text-purple-500" : ""}>HIGHLIGHTS</span></NavLink> */}
             <NavLink to="/pickems" className={location.pathname === "/pickems" ? " text-purple-500"  : " hover:text-purple-400"}>PICK'EM</NavLink>
             <NavLink to="/taisykles" className={location.pathname === "/taisykles" ? " text-purple-500 "  : "hover:text-purple-400"}>TAISYKLĖS</NavLink>
-            <NavLink to="/remejai" className={location.pathname === "/remejai" ? " text-purple-500"  : " hover:text-purple-400"}>REMĖJAI</NavLink>
+            <NavLink to="/remejai" className={location.pathname === "/remejai" ? " text-purple-500"  : " hover:text-purple-400"}>RĖMĖJAI</NavLink>
             <button onClick={() => accountAction()} className="bg-transparent hover:bg-purple-400 text-purple-400 font-semibold hover:text-white  border border-purple-400 hover:border-transparent rounded" >
                 <div className="text-lg">
                     {userID === null ? <>PRISIJUNGTI <FaTwitch className="inline"/></> : 
