@@ -46,7 +46,13 @@ const Rules = () => {
                         </div>
                     </div>
                 </div>
-                <p className="text-xl">
+                <br />
+                <p className="text-lg">
+                    Taip pat Razer įsteigti prizai laimėtojams: <br />
+                    1. BlackWidow V3 (green) <br />Barracuda X <br />Viper and Strider XXL<br />
+                    2. Barracuda X + Viper<br />
+                    3. Barracuda X<br />
+                    <br />
                     Vienas dalyvis gaus 100€ bonus
                 </p>
 

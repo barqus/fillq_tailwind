@@ -35,14 +35,14 @@ const SponsorsComponent = () => {
                         <img src={ZyroLogo} alt="logo" className="cursor-pointer" onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} />
                     </div>
                     <div className="col-span-2 text-justify mb-12">
-                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <p onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p>.
+                        Susikurk svetainę ar el. parduotuvę su Zyro lengvai ir greitai! Gauk iki 86% nuolaidą, 3 nemokamus mėnesius ir domeną dovanų su kodu <p onClick={() => { window.open("https://zyro.com/lt/special/fillq", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ ir gauk 72% nuolaidą</p>.
                     </div>
 
                     <div className="flex justify-center items-center mb-6">
                         <img src={SurfsharkLogo} alt="logo" className="cursor-pointer" onClick={() => { window.open("https://surfshark.deals/FILLQ", "_blank") }} />
                     </div>
                     <div className="col-span-2 text-justify mb-12">
-                        Po visų duomenų nesaugumo skandalų būtų nuodėmė naršyti internete be VPN. Gera žinia ta, kad Surfshark paruošė jums labai gerą deal‘ą. Naudok kodą <p onClick={() => { window.open("https://surfshark.deals/FILLQ", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p> ir gauk 72% nuolaidą bei keturis papildomus mėnesius nemokamai.
+                        Po visų duomenų nesaugumo skandalų būtų nuodėmė naršyti internete be VPN. Gera žinia ta, kad Surfshark paruošė jums labai gerą deal‘ą. Naudok kodą <p onClick={() => { window.open("https://surfshark.deals/FILLQ", "_blank") }} className="underline cursor-pointer text-purple-400 inline-block">FILLQ</p> ir gauk 83% nuolaidą bei keturis papildomus mėnesius nemokamai.
                     </div>
                     <div className="flex justify-center items-center mb-6">
                         <img src={Tuta} alt="logo" className="cursor-pointer" onClick={() => { window.open("https://tuta.lt/", "_blank") }} />
