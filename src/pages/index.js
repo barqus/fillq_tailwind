@@ -2,17 +2,15 @@ import React, {useEffect} from 'react'
 import { AiOutlineFacebook,AiOutlineInstagram } from 'react-icons/ai'
 import {FaDiscord} from 'react-icons/fa'
 import pogchamp from '../components/assets/pogchamp.png';
-import { useNavigate } from "react-router-dom";
+import Countdown from 'react-countdown';
+
 import PlayerTable from '../components/HomePage/PlayerTable';
 
-const Home = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate("/pickems");
-    }, [])
+const Home = ({participants}) => {
     return (
-        <div className="text-white text-5xl md:text-8xl font-bold font-sans text-center mt-2">
-            <PlayerTable />
+        <div className=" mt-12 text-center text-white text-3xl font-bold font-sans">
+            IKI FILLQ PRADŽIOS LIKO: <Countdown date={Date.parse("2021-12-04T12:00:00+02:00")} />
+            <PlayerTable participants={participants} />
             {/* <h1> FILLQ SUGRĮŽTA </h1><img src={pogchamp} className="object-contain inline" alt="PogChamp"></img> 
             <h2 className="  text-4xl"> Sekite naujienas: 
                 <AiOutlineFacebook className="cursor-pointer text-6xl inline mb-1 mx-2" onClick={()=> window.open("https://www.facebook.com/ironwolveslt", "_blank")}></AiOutlineFacebook> 

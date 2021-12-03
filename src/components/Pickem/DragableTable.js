@@ -81,7 +81,7 @@ const DragableTable = ({ participants }) => {
     return (
         <>
             {participants.length > 0 &&
-                <div className="mt-12 text-center text-white text-4xl text-3xl font-bold font-sans">
+                <div className="mt-12 text-center text-white `text-3xl font-bold font-sans">
                     FILLQ DALYVIŲ PICK'EMS
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
@@ -89,7 +89,7 @@ const DragableTable = ({ participants }) => {
                                 <p className="">
                                     Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
                                     {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
-                                    Spėk, kurią vietą užims dalyviai reitingų lentelėje!<br />
+                                    Spėk, kurią vietą užims dalyviai reitingų <span className="underline cursor-pointer text-purple-500"  onClick={() => { window.open("https://fillq.lt/", "_blank") }}>lentelėje</span >!<br />
                                 </p>
                                 <hr className=" my-6" />
                                 Taškai skaičiuojami taip:
@@ -98,9 +98,8 @@ const DragableTable = ({ participants }) => {
                                     2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
                                     3. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
                                 </p> <br />
-                                Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00<br />
+                                Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 5 dieną 23:59<br />
                                 Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
-
                             </p>
                             {/* <p className="text-base text-justify m-4">
                                 Spėk kokioje vietoje bus dalyviai po dviejų savaičių ir surink kuo daugiau tašku. Pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00

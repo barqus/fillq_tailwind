@@ -46,6 +46,8 @@ function App({ hideLoader }) {
     };
     fetchData('participants/');
 
+    
+
     window.addEventListener('resize', hideMenu)
     setUserID(localStorage.getItem('twitchCode'))
   }, [])
@@ -65,7 +67,7 @@ function App({ hideLoader }) {
           <Dropdown isOpen={isOpen} toggle={toggle} userID={userID} setUserID={setUserID} />
           <div>
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home participants={participants} />} />
               <Route path="/dalyviai" element={<Participants participants={participants} />} />
               <Route path="/pickems" element={<Pickems participants={participants} />} />
               {/* <Route path="/video" element={<Highlights />} /> */}
