@@ -16,7 +16,7 @@ const fetchDataCall = async ({ api }) => {
                 rankOrdering[rankOrder[i]] = i;
 
             response.data = response.data.sort(function (a, b) {
-                return tierOrdering[a.tier] - tierOrdering[b.tier] || rankOrdering[a.rank] - rankOrdering[b.rank] || b.points - a.points || b.wins - a.wins;
+                return tierOrdering[a.tier] - tierOrdering[b.tier] || rankOrdering[a.rank] - rankOrdering[b.rank] || b.points - a.points || Math.floor(a.wins/(a.wins+a.losses)) - Math.floor(b.wins/(b.wins+b.losses));
             });
 
 
