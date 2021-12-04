@@ -74,7 +74,7 @@ const PlayerTable = ({ participants }) => {
                                         <td className="px-6 py-4 whitespace-nowrap text-right">
                                             <span className="text-green-500">{item.wins}W </span>
                                             <span className="text-red-500">{item.losses}L </span>
-                                            <span className="text-gray-500">{!isNaN(Math.floor(item.wins/(item.wins+item.losses))) ?    (item.wins/(item.wins+item.losses)).toFixed(4)*100 : 0}% </span>
+                                            <span className="text-gray-500">{!isNaN(Math.floor(item.wins/(item.wins+item.losses))) ? (((item.wins/(item.wins+item.losses))*100).toFixed(2)) : 0}% </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {item.is_live ?
