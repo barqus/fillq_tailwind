@@ -82,7 +82,7 @@ const DragableTable = ({ participants }) => {
     return (
         <>
             {participants.length > 0 &&
-                <div className="mt-12 text-center text-white `text-3xl font-bold font-sans">
+                <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
                     FILLQ DALYVIŲ PICK'EMS
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 gap-4 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
