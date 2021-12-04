@@ -32,19 +32,19 @@ const PlayerTable = ({ participants }) => {
                         <table className=" min-w-full divide-y divide-purple-500 text-white">
                             <thead className="font-bold bg-gradient-to-r from-purple-800 to-green-500 ">
                                 <tr >
-                                    <th scope="col" className="px-6 py-3 text-center text-base  uppercase tracking-wider">
+                                    <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider">
                                         Dalyvis
                                     </th>
-                                    <th scope="col" className="px-6 py-3 text-center text-base  uppercase tracking-wider">
+                                    <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider">
                                         Twitch Paskyra
                                     </th>
-                                    <th scope="col" className="px-6 py-3 text-center text-base uppercase tracking-wider">
+                                    <th scope="col" className="px-6 py-3 text-left text-base uppercase tracking-wider">
                                         FillQ LoL Paskyra
                                     </th>
-                                    <th scope="col" className="px-6 py-3 text-center text-base uppercase tracking-wider">
+                                    <th scope="col" className="px-6 py-3 text-left text-base uppercase tracking-wider">
                                         Reitingas
                                     </th>
-                                    <th scope="col" className="px-6 py-3 text-center text-base uppercase tracking-wider">
+                                    <th scope="col" className="px-6 py-3 text-right text-base uppercase tracking-wider">
                                         Statistika
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-center text-base uppercase tracking-wider">
@@ -65,7 +65,7 @@ const PlayerTable = ({ participants }) => {
                                         <td className="px-6 py-4 whitespace-nowrap cursor-pointer text-left" onClick={() => { window.open("https://euw.op.gg/summoner/userName=" + item.summoner_name, "_blank") }}>{item.summoner_name}
                                             <img src={opgg} alt="OPGG" className="w-8 inline-block"></img>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                                        <td className="px-6 py-4 whitespace-nowrap text-left">
                                             {item.tier === null ? "Nesužaisti reikiami žaidimai"
                                                 : <> {item.tier} {item.rank} {item.points} </>
                                             }
