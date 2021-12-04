@@ -73,7 +73,8 @@ const PlayerTable = ({ participants }) => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-center">
                                             <span className="text-green-500">{item.wins}W </span>
-                                            <span className="text-red-500">{item.losses}L</span>
+                                            <span className="text-red-500">{item.losses}L </span>
+                                            <span className="text-gray-500">{Math.floor(item.wins/(item.wins+item.losses))} % </span
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {item.is_live ?
