@@ -22,7 +22,7 @@ const PlayerTable = ({ participants }) => {
     }
 
     return (
-        <div classNameName="container" >
+        <div className="container" >
             <div className="mt-6 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2     align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-2 border-purple-500 bg-opacity-10 sm:rounded-lg"
@@ -71,10 +71,10 @@ const PlayerTable = ({ participants }) => {
                                             }
 
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                                        <td className="px-6 py-4 whitespace-nowrap text-right">
                                             <span className="text-green-500">{item.wins}W </span>
                                             <span className="text-red-500">{item.losses}L </span>
-                                            <span className="text-gray-500">{!isNaN(Math.floor(item.wins/(item.wins+item.losses))) ? Math.floor(item.wins/(item.wins+item.losses)) : 0}% </span>
+                                            <span className="text-gray-500">{!isNaN(Math.floor(item.wins/(item.wins+item.losses))) ?    (item.wins/(item.wins+item.losses)).toFixed(4)*100 : 0}% </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {item.is_live ?
