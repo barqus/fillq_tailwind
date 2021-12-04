@@ -7,8 +7,9 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import VIPERLogo from './VIPER.png'
-import ramjpg from './ram.jpg'
-import ssdjpg from './ssd.jpg'
+import ramjpg from './ramai.png'
+import ssdjpg from './ssdas.png'
+import headsetas from './headsetas.png'
 // TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
 const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
@@ -83,13 +84,13 @@ const DragableTable = ({ participants }) => {
             {participants.length > 0 &&
                 <div className="mt-12 text-center text-white `text-3xl font-bold font-sans">
                     FILLQ DALYVIŲ PICK'EMS
-                    <div className="m grid md:grid-cols-3 sm:grid-cols-1 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
+                    <div className="m grid md:grid-cols-3 sm:grid-cols-1 gap-4 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
                             <p className="text-base text-justify m-4">
                                 <p className="">
                                     Stebėsi FILLQ? O gal nori ir prizų laimėti? <br />
                                     {/* TODO: FIX THIS ONE HYPERLINK TO TABLE */}
-                                    Spėk, kurią vietą užims dalyviai reitingų <span className="underline cursor-pointer text-purple-500"  onClick={() => { window.open("https://fillq.lt/", "_blank") }}>lentelėje</span >!<br />
+                                    Spėk, kurią vietą užims dalyviai reitingų <span className="underline cursor-pointer text-purple-500" onClick={() => { window.open("https://fillq.lt/", "_blank") }}>lentelėje</span >!<br />
                                 </p>
                                 <hr className=" my-6" />
                                 Taškai skaičiuojami taip:
@@ -112,23 +113,24 @@ const DragableTable = ({ participants }) => {
                             <p className="text-base text-justify upper-case">
                                 <p className="">
                                     • VIPER VPN110 <a href="https://viper.patriotmemory.com/products/solid-state-drives-ssd" className="text-purple-500 cursor underline" >SSD</a>  1TB M.2 PCIe<br />
-                                    <img src={ssdjpg} alt="SSD" />
+
                                     • PATRIOT VIPER 16 GB <a href="https://viper.patriotmemory.com/products/performance-memory-ram-ddr4-ddr3" className="text-purple-500 cursor underline" >RAM</a> <br />
-                                    <img src={ramjpg} alt="RAM" />
+
                                     • PATRIOT VIPER PV380 HEADSET <br />
                                 </p>
                                 <br />
                                 Prizus įsteigė Patriot Viper!
                                 Lyderiaujantys SSD, RAM ir periferijos gamintojai. Įsikūrę 1985 metais Amerikoje. Žaidėjams suteikiantys geriausią galios ir kainos santykį rinkoje.
-                                <img src={VIPERLogo} alt="viper logo" />
-                                <p className="text-center mt-2 text-xl">
+                                <p className="text-center mt-6 text-xl">
                                     NAUJI <a href="https://www.youtube.com/watch?v=pQqMBbQriZg" className="text-purple-500 cursor underline" >DDR5</a>
                                 </p>
+                                <img src={VIPERLogo} className="mt-4" alt="viper logo" />
+                                
                             </p>
                         </div>
                         <div className="col-span-2 mt-12">
                             <p>TAVO PICK'EMS</p>
-                            {loading ? <p className="text-center mt-2 text-xl">KRAUNAMA...</p>  :
+                            {loading ? <p className="text-center mt-2 text-xl">KRAUNAMA...</p> :
                                 <DragDropContext onDragEnd={handleOnDragEnd}>
                                     <Droppable droppableId="players">
                                         {(provided) => (
@@ -161,14 +163,21 @@ const DragableTable = ({ participants }) => {
                                 </DragDropContext>
                             }
 
-                            {userID !== null &&
+                            {userID === null &&
                                 <button onClick={() => savePickEms()}
                                     className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
                                     {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
                                 </button>}
-
                         </div>
-
+                        <div className="">
+                            <img src={ssdjpg} className="border-1 rounded-xl" alt="SSD" />
+                        </div>
+                        <div className="">
+                            <img src={ramjpg} className="border-1 rounded-xl" alt="RAM" />
+                        </div>
+                        <div>
+                            <img src={headsetas} alt="RAM" className="border-1 rounded-xl"/>
+                        </div>
                     </div>
                     <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
                 </div>
