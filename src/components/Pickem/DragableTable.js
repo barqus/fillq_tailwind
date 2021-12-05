@@ -85,7 +85,10 @@ const DragableTable = ({ participants }) => {
         <>
             {participants.length > 0 &&
                 <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
-                    IKI PICK'EMS UŽDARYMO LIKO: <Countdown date={Date.parse("2021-12-05T23:59:59+02:00")} />
+                    {new Date() < Date.parse("2021-12-05T23:59:59+02:00") && <>
+                        IKI PICK'EMS UŽDARYMO LIKO: <Countdown date={Date.parse("2021-12-05T23:59:59+02:00")} />
+                    </>}
+
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 gap-4 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
                             <p className="text-base text-justify m-4">
@@ -164,8 +167,7 @@ const DragableTable = ({ participants }) => {
                                     </Droppable>
                                 </DragDropContext>
                             }
-
-                            {userID !== null &&
+                            {userID !== null && new Date() < Date.parse("2021-12-05T23:59:59+02:00") &&
                                 <button onClick={() => savePickEms()}
                                     className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
                                     {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
