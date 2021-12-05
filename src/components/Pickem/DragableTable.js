@@ -10,6 +10,8 @@ import VIPERLogo from './VIPER.png'
 import ramjpg from './ramai.png'
 import ssdjpg from './ssdas.png'
 import headsetas from './headsetas.png'
+import Countdown from 'react-countdown';
+
 // TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
 const DragableTable = ({ participants }) => {
     const [players, updatePlayers] = useState([]);
@@ -83,7 +85,7 @@ const DragableTable = ({ participants }) => {
         <>
             {participants.length > 0 &&
                 <div className="mt-12 text-center text-white text-3xl font-bold font-sans">
-                    FILLQ DALYVIŲ PICK'EMS
+                    IKI PICK'EMS UŽDARYMO LIKO: <Countdown date={Date.parse("2021-12-05T23:59:59+02:00")} />
                     <div className="m grid md:grid-cols-3 sm:grid-cols-1 gap-4 bg-gray-900 mt-6 pr-4 pl-4 rounded-xl pb-7">
                         <div className="bg-gray-900 mt-12 m-2 rounded-lg mr-6 ml-4">
                             <p className="text-base text-justify m-4">
