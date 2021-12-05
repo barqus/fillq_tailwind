@@ -99,8 +99,8 @@ const DragableTable = ({ participants }) => {
                                     2. Teisingai atspėti Top 3 - papildomai 3 taškai.<br />
                                     3. Teisingai atspėjus daugiau nei 10 - papildomi 3 taškai.<br />
                                 </p> <br />
-                                Spėjimus ir pakeitimus gali atlikti iki renginio pradžios Gruodžio 5 dieną 23:59<br />
-                                Daugiausiai tašku surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
+                                Spėjimus ir pakeitimus gali atlikti iki Gruodžio 5 dieną 23:59<br />
+                                Daugiausiai taškų surinkę žiūrovai laimės partnerių įsteigtus prizus!<br />
                             </p>
                             {/* <p className="text-base text-justify m-4">
                                 Spėk kokioje vietoje bus dalyviai po dviejų savaičių ir surink kuo daugiau tašku. Pakeitimus gali atlikti iki renginio pradžios Gruodžio 4 dieną 12:00
