@@ -21,6 +21,10 @@ import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 // TODO FIX PRESSING ON TEXT
 // TODO: SPINNER FOR COMPONENTS
+Analytics.autoTrack('session', {
+  enable: true,
+  provider: 'AWSPinpoint'
+});
 function App({ hideLoader }) {
   const [isOpen, setIsOpen] = useState(false)
   const [userID, setUserID] = useState(null)
