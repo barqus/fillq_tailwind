@@ -2,52 +2,37 @@ import React from 'react'
 import PlayerBox from '../components/Participant/PlayerBox'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-const Participants = ({participants}) => {
+import Table from '../components/HomePage/Table'
+import PlayerModal from '../components/Participant/PlayerModal'
+
+const Participants = ({}) => {
     // TODO: FIX THIS ONE
-    // const [participants, setParticipants] = useState([])
-    // useEffect(() => {
-    //     const apiEndpoint = "https://fillq-333518.appspot.com/api/v1//participants/"
-    //     axios.get(apiEndpoint)
-    //         .then(res => {
-    //             setParticipants(res.data)
-    //             console.log(res.data)
-    //         })
-    //         .catch(
-    //             () => {
-    //                 console.log("HERRE")
-    //             }
-    //         )
-    // }, [])
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await axios(
-    //             'https://fillq-333518.appspot.com/api/v1//participants/',
-    //         );
+    const [participants, setParticipants] = useState([])
+    const [showModal, setShowModal] = useState(false)
+    const [loaded, setLoaded] = useState(false)
 
-    //         setParticipants(result.data);
-    //     };
+    async function fetchData() {
+        let response = await axios(
+            "http://127.0.0.1:5001/api/v1/participants"
+        );
+        let participantsAPI = await response.data.participants;
+        setParticipants(participantsAPI);
+        setLoaded(true)
+    }
 
-    //     fetchData();
-    // }, []);
+
+    useEffect(() => {
+        fetchData()
+    }, [])
     return (
         <div className=" mt-12 text-center text-white text-3xl font-bold font-sans">
-            FILLQ DALYVAUJANTYS ŽAIDĖJAI
-            <div className="mt-6 justify-items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-center">
-                {participants.map(item => (
-                    <PlayerBox participant={item} />
-                ))}
-                {/* {participants} */}
-                {/* <PlayerBox name={"YASHIRO"} />
-                <PlayerBox name={"WARDEN"} />
-                <PlayerBox name={"TIGRIUKE"} />
-                <PlayerBox name={"JAUNUTIS"} />
-                <PlayerBox name={"ELOSANTA"} />
-                <PlayerBox name={"DOMAS"} />
-                <PlayerBox name={"UGNIUX15"} />
-                <PlayerBox name={"PAREIN"} />
-                <PlayerBox name={"GURKLYS"} />
-                <PlayerBox name={"RIMTUOLIS"} />
-                <PlayerBox name={"KURBSEN"} /> */}
+
+            <div className="container mt-6 mb-6">
+                <div className="flex my-6 ">
+                    <button onClick={() => setShowModal(true)}  className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD PARTICIPANT</button>
+                </div>
+                { showModal ? <PlayerModal isEditing={false} fetchData={fetchData} setShowModal={setShowModal}/> : ""}
+                { loaded ? <Table participants={participants} fetchData={fetchData}/> : "LOADING..."}
             </div>
         </div>
 

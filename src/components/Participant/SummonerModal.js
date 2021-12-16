@@ -9,9 +9,9 @@ import Amplify, { Analytics } from 'aws-amplify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurname }) => {
+const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editName, editRank, participantID }) => {
     const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
+    const [rank, setRank] = useState("");
     const wrapperRef = useRef(null);
 
     useOutsideAlerter(wrapperRef, setShowModal);
@@ -22,14 +22,14 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
         evt.preventDefault();
         // 
         if (isEditing) {
-            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+editID, { id: editID, name: name, surname: surname },
+            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjM5NzQxOTIzfQ.4XghpfHrrzNQrqwIh3IHaay1_aEIEsy5idawtxWVZ4A`
                 }
             })
             .then((res) => {
-                fetchData()
+                fetchData(participantID)
                 setShowModal(false)
                 console.log("res", res)
             })
@@ -38,14 +38,14 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
             })
         } 
         else {
-            await axios.post('http://127.0.0.1:5001/api/v1/participants', { name: name, surname: surname },
+            await axios.post('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjM5NzQxOTIzfQ.4XghpfHrrzNQrqwIh3IHaay1_aEIEsy5idawtxWVZ4A`
                 }
             })
             .then((res) => {
-                fetchData()
+                fetchData(participantID)
                 setShowModal(false)
                 console.log("res", res)
             })
@@ -57,7 +57,7 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
 
     useEffect(() => {
         setName(editName)
-        setSurname(editSurname)
+        setRank(editRank)
     }, [])
 
     return (
@@ -82,7 +82,7 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
                                 <div className="md:flex md:items-center mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                                            Name
+                                            Nickname
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -93,12 +93,12 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
                                 <div className="md:flex md:items-center mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                                            Surname
+                                            Rank
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
                                         <input className="mx-2 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                            id="inline-full-name" type="text" value={surname} onChange={e => setSurname(e.target.value)} />
+                                            id="inline-full-name" type="text" value={rank} onChange={e => setRank(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="flex">
@@ -119,4 +119,4 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
     )
 }
 
-export default Modal
+export default SummonerModal

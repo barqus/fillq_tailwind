@@ -42,19 +42,20 @@ const Dropdown = ({isOpen, toggle, userID, setUserID}) => {
         <div className={isOpen ? 'grid grid-rows-6 text-center items-center bg  text-white font-sans font-bold text-lg' : 'hidden'}  onClick={toggle}
         style={{background: "linear-gradient(120deg,#722f818a 0%, rgba(3, 71, 57, 1) 100%)"}}>
             <NavLink to="/dalyviai" className={location.pathname === "/dalyviai" ? " text-purple-500 hover m-8"  : " hover:text-purple-400"}>DALYVIAI</NavLink>
+            {/* <NavLink to="/summoners" className="p-4 hover:text-purple-400"><span className={location.pathname === "/summoners" ? " text-purple-500" : ""}>SUMMONERS</span></NavLink> */}
+            {/* <NavLink to="/streamers" className="p-4 hover:text-purple-400"><span className={location.pathname === "/streamers" ? " text-purple-500" : ""}>STREAMERS</span></NavLink> */}
             {/* <NavLink to="/video" className="p-4 hover:text-purple-400"><span className={location.pathname === "/video" ? " text-purple-500" : ""}>HIGHLIGHTS</span></NavLink> */}
-            <NavLink to="/pickems" className={location.pathname === "/pickems" ? " text-purple-500 m-8"  : " hover:text-purple-400"}>PICK'EM</NavLink>
+            {/* <NavLink to="/pickems" className={location.pathname === "/pickems" ? " text-purple-500 m-8"  : " hover:text-purple-400"}>PICK'EM</NavLink> */}
             <NavLink to="/taisykles" className={location.pathname === "/taisykles" ? " text-purple-500  m-8"  : "hover:text-purple-400"}>TAISYKLĖS</NavLink>
             <NavLink to="/remejai" className={location.pathname === "/remejai" ? " text-purple-500 m-8"  : " hover:text-purple-400"}>RĖMĖJAI</NavLink>
-            <button onClick={() => accountAction()} className="bg-transparent hover:bg-purple-400 m-8 text-purple-400 font-semibold hover:text-white  border border-purple-400 hover:border-transparent rounded" >
+            {/* <button onClick={() => accountAction()} className="bg-transparent hover:bg-purple-400 m-8 text-purple-400 font-semibold hover:text-white  border border-purple-400 hover:border-transparent rounded" >
                 <div className="text-lg">
                     {userID === null ? <>PRISIJUNGTI <FaTwitch className="inline"/></> : 
                     <div>
-                        {/* <img src={userInfo.profile_image_url} className="object-contain w-6 inline rounded-lg border border-purple-400 mr-6" alt="user avatar"></img>  */}
                         {userInfo.display_name} <ImExit className="inline ml-2"/>
                     </div>}
                 </div> 
-            </button>
+            </button> */}
         </div>
     )
 }

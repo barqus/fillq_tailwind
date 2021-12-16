@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import PlayerModal from './PlayerModal';
+import Modal from './PlayerModal';
 
 const PlayerBox = ({participant}) => {
     const [isHovered, setIsHovered] = useState(false)
@@ -17,7 +17,7 @@ const PlayerBox = ({participant}) => {
                 }}>
                 <span className={isHovered ? `text-2xl` : `text-xl`}>{participant.nickname}</span>
             </div>
-            { showModal ? <PlayerModal setShowModal={setShowModal} participant={participant} /> : ""}
+            { showModal ? <Modal setShowModal={setShowModal} participant={participant} /> : ""}
         </>
     )
 }

@@ -15,6 +15,8 @@ import Sponsors from './pages/SponsorPage.js';
 import Background from './components/assets/background.png';
 import fetchDataCall from './components/utils/fetchApi'
 import Spinner from './components/utils/Spinner';
+import Summoners from './pages/Summoners.js';
+import Streamers from './pages/Streamers.js';
 import Rules from './pages/RulesAndPrizes';
 import Amplify, { Analytics } from 'aws-amplify';
 import awsconfig from './aws-exports';
@@ -73,6 +75,7 @@ function App({ hideLoader }) {
             <Routes>
               <Route exact path="/" element={<Home participants={participants} />} />
               <Route path="/dalyviai" element={<Participants participants={participants} />} />
+              <Route path="/summoners" element={<Summoners />} />
               <Route path="/pickems" element={<Pickems participants={participants} />} />
               {/* <Route path="/video" element={<Highlights />} /> */}
               <Route path="/taisykles" element={<Rules />} />
