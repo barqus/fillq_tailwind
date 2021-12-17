@@ -9,7 +9,7 @@ import PlayerTable from '../components/HomePage/PlayerTable';
 const Home = ({participants}) => {
     return (
         <div className=" mt-12 text-center text-white text-3xl font-bold font-sans">
-            {/* IKI FILLQ PRADŽIOS LIKO: <Countdown date={Date.parse("2021-12-04T12:00:00+02:00")} /> */}
+            IKI FILLQ PABAIGOS LIKO: <Countdown date={Date.parse("2021-12-18T23:59:59+02:00")} />
             <PlayerTable participants={participants} />
             {/* <h1> FILLQ SUGRĮŽTA </h1><img src={pogchamp} className="object-contain inline" alt="PogChamp"></img> 
             <h2 className="  text-4xl"> Sekite naujienas: 
