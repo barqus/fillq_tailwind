@@ -9,9 +9,9 @@ import Amplify, { Analytics } from 'aws-amplify';
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, editRank, participantID }) => {
-    const [name, setName] = useState("");
-    const [rank, setRank] = useState("");
+const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editUsername, editLive, participantID, summonerID }) => {
+    const [username, setUsername] = useState("");
+    const [live, setLive] = useState(false);
     const wrapperRef = useRef(null);
 
     useOutsideAlerter(wrapperRef, setShowModal);
@@ -23,14 +23,16 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
         // 
         const access_token = localStorage.getItem("access_token");
         if (isEditing) {
-            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
+            console.log("DASDASD", live)
+            
+            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/'+editID, { id: editID, is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
                 }
             })
             .then((res) => {
-                fetchData(participantID)
+                fetchData(participantID,summonerID)
                 setShowModal(false)
                 console.log("res", res)
             })
@@ -39,14 +41,15 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
             })
         } 
         else {
-            await axios.post('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
+            console.log("DASDASD", live)
+            await axios.post('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/', { is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
                 }
             })
             .then((res) => {
-                fetchData(participantID)
+                fetchData(participantID,summonerID)
                 setShowModal(false)
                 console.log("res", res)
             })
@@ -57,8 +60,8 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
     }
 
     useEffect(() => {
-        setName(editName)
-        setRank(editRank)
+        setUsername(editUsername)
+        setLive(editLive)
     }, [])
 
     return (
@@ -70,7 +73,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                     <div className="w-6xl border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
                         <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t bg-gradient-to-r from-purple-800 to-green-500 ">
                             <h3 className="text-3xl font-semibold text-white">
-                                {isEditing ? "EDIT SUMMONER" : "ADD SUMMONER"}
+                                {isEditing ? "EDIT STREAMER" : "ADD STREAMER"}
                             </h3>
                             <div className=" cursor-pointer p-1 ml-auto border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                                 <AiOutlineClose onClick={() => setShowModal(false)} />
@@ -88,7 +91,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                                     </div>
                                     <div className="md:w-2/3">
                                         <input className="mx-2 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                            id="inline-full-name" type="text" value={name} onChange={e => setName(e.target.value)} />
+                                            id="inline-full-name" type="text" value={username} onChange={e => setUsername(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="md:flex md:items-center mb-6">
@@ -98,8 +101,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
-                                        <input className="mx-2 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                            id="inline-full-name" type="text" value={rank} onChange={e => setRank(e.target.value)} />
+                                        <input type="checkbox" className='form-checkbox' checked={live} onChange={e => setLive(e.target.checked)} />
                                     </div>
                                 </div>
                                 <div className="flex">
@@ -120,4 +122,4 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
     )
 }
 
-export default StreamerModal
+export default SummonerModal

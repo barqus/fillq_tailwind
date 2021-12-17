@@ -4,80 +4,59 @@ import { AiOutlineEdit, AiOutlineDownCircle } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs'
 import axios from 'axios';
 import moment from 'moment';
-import SummonerModal from '../Participant/SummonerModal'
-import TableStreamers from './TableStreamers';
+import StreamerModal from '../Participant/StreamerModal'
 
 // TODO: add sort for summoners
-const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
+const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerData }) => {
     const [isHovered, setIsHovered] = useState(false)
     const [hoveredAcc, setHoveredAcc] = useState("")
     const [timeStreamed, setTimeStreamed] = useState(null)
     const [showModal, setShowModal] = useState(false)
-    const [streamers, setStreamers] = useState([])
+    // const [streamers, setStreamers] = useState([])
     const [editID, setEditID] = useState("")
-    const [editName, setEditName] = useState("")
-    const [editRank, setEditRank] = useState("")
+    const [editUsername, setEditUsername] = useState("")
+    const [editLive, setEditLive] = useState(false)
     const [openedID, setOpenedID] = useState("")
     const [openEditing, setOpenEditing] = useState(true)
     const [dropOpened, setDropOpened] = useState(false)
 
-    const HandleEdit = async (id, name, rank) => {
+    const HandleEdit = async (id, name, live) => {
         setEditID(id)
-        setEditName(name)
-        setEditRank(rank)
+        setEditUsername(name)
+        setEditLive(live)
         setOpenEditing(true)
         setShowModal(true)
     }
 
-    async function fetchStreamers(id) {
-        let response = await axios(
-            "http://127.0.0.1:5001/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
-        );
-        let str = await response.data.streamers;
-        if (str === null) {
-            str = []
-        }
-        setStreamers(str);
-        console.log("🚀 ~ file: TableSummoners.js ~ line 40 ~ fetchStreamers ~ str", str)
-    }
-
-    
-    async function fetchStreamerData(pID, sumID) {
-        let response = await axios(
-            "http://127.0.0.1:5001/api/v1/participants/" + pID + "/summoners/"+ sumID + "/streamers/"
-        );
-        let str = await response.data.streamers;
-        if (str === null) {
-            str = []
-        }
-        setStreamers(str);
-        console.log("🚀 ~ file: TableSummoners.js ~ line 40 ~ fetchStreamers ~ str", str)
-    }
-
-    const openStreamers = async (id) => {
-        if (!dropOpened) {
-            fetchStreamers(id)
-            setOpenedID(id)
-        }
-        setDropOpened(!dropOpened)
-    }
+    // async function fetchStreamers(id) {
+    //     let response = await axios(
+    //         "http://127.0.0.1:5001/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
+    //     );
+    //     let str = await response.data.streamers;
+    //     if (str === null) {
+    //         str = []
+    //     }
+    //     setStreamers(str);
+    //     console.log("🚀 ~ file: TableSummoners.js ~ line 40 ~ fetchStreamers ~ str", str)
+    // }
+    // const openStreamers = async (id) => {
+    //     if (!dropOpened) {
+    //         fetchStreamers(id)
+    //         setOpenedID(id)
+    //     }
+    //     setDropOpened(!dropOpened)
+    // }
 
     const HandleDelete = async (id) => {
-        // let response = await axios(
-        //     "http://127.0.0.1:5001/api/v1/participants"
-        // );
-        // let participantsAPI = await response.data.participants;
-        // setParticipants(participantsAPI);
-        // setLoaded(true)
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://127.0.0.1:5001/api/v1/participants/' + participantID + '/summoners/' + id,
+        await axios.delete('http://127.0.0.1:5001/api/v1/participants/' + participantID + '/summoners/' + summonerID + '/streamers/'+ id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
                 }
             })
             .then((res) => {
-                fetchSummonerData(participantID)
+                fetchStreamerData(participantID, summonerID)
                 console.log("res", res)
             })
             .catch((err) => {
@@ -93,7 +72,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
     return (
         <div className="container" >
             <div className="flex my-6 ">
-                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD SUMMONER</button>
+                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD STREAMER</button>
             </div>
             <div className="mt-6 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2     align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -105,10 +84,10 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
                             <thead className="font-bold bg-gradient-to-r from-purple-800 to-green-500 ">
                                 <tr >
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Summoner Name
+                                        Username
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Rank
+                                        Is Live
                                     </th>
                                     <th>
                                     </th>
@@ -123,22 +102,22 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
                             }} className="bg-white bg-opacity-10   text-base font-semibold divide-y divide-purple-500">
 
 
-                                {summoners.map((item, key) => (
+                                {streamers.map((item, key) => (
                                     <>
                                         <tr key={key}>
 
-                                            <td className="px-6 py-4 whitespace-nowrap text-left">{item.name}</td>
-                                            <td className="pl-6 py-4 whitespace-nowrap text-left">{item.rank}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-left">{item.username}</td>
+                                            <td className="pl-6 py-4 whitespace-nowrap text-left">{item.is_live ? "LIVE" : "OFFLINE"}</td>
 
-                                            <td><AiOutlineEdit className=" text-yellow-400 text-2xl cursor-pointer" onClick={() => HandleEdit(item.id, item.name, item.rank)} /></td>
+                                            <td><AiOutlineEdit className=" text-yellow-400 text-2xl cursor-pointer" onClick={() => HandleEdit(item.id, item.username, item.is_live)} /></td>
                                             <td><BsTrash className=" text-red-400 text-2xl cursor-pointer" onClick={() => HandleDelete(item.id)} /></td>
-                                            <td><AiOutlineDownCircle className=" text-white-400 text-2xl cursor-pointer" onClick={() => openStreamers(item.id)} /></td>
+                                            {/* <td><AiOutlineDownCircle className=" text-white-400 text-2xl cursor-pointer" onClick={() => openStreamers(item.id)} /></td> */}
 
                                         </tr>
-                                        {dropOpened && openedID === item.id &&
+                                        {openedID === item.id &&
                                             <tr>
-                                                <td colSpan="5" className="p-4">
-                                                    <TableStreamers streamers={streamers} participantID={participantID} summonerID={item.id} fetchStreamerData={fetchStreamerData} />
+                                                <td colSpan="5">
+
                                                 </td>
                                             </tr>
                                         }
@@ -149,9 +128,9 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
                     </div>
                 </div>
             </div>
-            {showModal ? <SummonerModal fetchData={fetchSummonerData} setShowModal={setShowModal} editID={editID} editName={editName} editRank={editRank} isEditing={openEditing} participantID={participantID} /> : ""}
+            {showModal ? <StreamerModal fetchData={fetchStreamerData} setShowModal={setShowModal} editID={editID} editUsername={editUsername} editLive={Boolean(editLive)} isEditing={openEditing} participantID={participantID} summonerID={summonerID}/> : ""}
         </div >
     )
 }
 
-export default TableSummoners
+export default TableStreamers

@@ -61,10 +61,11 @@ const Table = ({ participants, fetchData }) => {
         // let participantsAPI = await response.data.participants;
         // setParticipants(participantsAPI);
         // setLoaded(true)
+        const access_token = localStorage.getItem("access_token");
         await axios.delete('http://127.0.0.1:5001/api/v1/participants/' + id,
             {
                 headers: {
-                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjM5NzQxOTIzfQ.4XghpfHrrzNQrqwIh3IHaay1_aEIEsy5idawtxWVZ4A`
+                    'Authorization': `Bearer ${access_token}`
                 }
             })
             .then((res) => {
