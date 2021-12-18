@@ -35,7 +35,7 @@ const Table = ({ participants, fetchData }) => {
 
     async function fetchSummoners(id) {
         let response = await axios(
-            "http://127.0.0.1:5001/api/v1/participants/" + id + "/summoners/"
+            "http://54.74.76.227:5000/api/v1/participants/" + id + "/summoners/"
         );
         let summ = await response.data.summoners;
         if (summ === null) {
@@ -56,13 +56,13 @@ const Table = ({ participants, fetchData }) => {
 
     const HandleDelete = async (id) => {
         // let response = await axios(
-        //     "http://127.0.0.1:5001/api/v1/participants"
+        //     "http://54.74.76.227:5000/api/v1/participants"
         // );
         // let participantsAPI = await response.data.participants;
         // setParticipants(participantsAPI);
         // setLoaded(true)
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://127.0.0.1:5001/api/v1/participants/' + id,
+        await axios.delete('http://54.74.76.227:5000/api/v1/participants/' + id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`

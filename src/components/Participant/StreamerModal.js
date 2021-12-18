@@ -25,7 +25,7 @@ const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editUsernam
         if (isEditing) {
             console.log("DASDASD", live)
             
-            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/'+editID, { id: editID, is_live: Boolean(live), username: username },
+            await axios.put('http://54.74.76.227:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/'+editID, { id: editID, is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -42,7 +42,7 @@ const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editUsernam
         } 
         else {
             console.log("DASDASD", live)
-            await axios.post('http://127.0.0.1:5001/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/', { is_live: Boolean(live), username: username },
+            await axios.post('http://54.74.76.227:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/', { is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`

@@ -23,7 +23,7 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
         // 
         if (isEditing) {
             const access_token = localStorage.getItem("access_token");
-            await axios.put('http://127.0.0.1:5001/api/v1/participants/'+editID, { id: editID, name: name, surname: surname },
+            await axios.put('http://54.74.76.227:5000/api/v1/participants/'+editID, { id: editID, name: name, surname: surname },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -40,7 +40,7 @@ const Modal = ({ fetchData, setShowModal, isEditing, editID, editName, editSurna
         } 
         else {
             const access_token = localStorage.getItem("access_token");
-            await axios.post('http://127.0.0.1:5001/api/v1/participants', { name: name, surname: surname },
+            await axios.post('http://54.74.76.227:5000/api/v1/participants', { name: name, surname: surname },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`

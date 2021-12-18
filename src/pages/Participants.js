@@ -13,7 +13,7 @@ const Participants = ({}) => {
 
     async function fetchData() {
         let response = await axios(
-            "http://127.0.0.1:5001/api/v1/participants"
+            "http://54.74.76.227:5000/api/v1/participants"
         );
         let participantsAPI = await response.data.participants;
         setParticipants(participantsAPI);
