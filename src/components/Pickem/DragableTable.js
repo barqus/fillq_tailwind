@@ -11,6 +11,8 @@ import ramjpg from './ramai.png'
 import ssdjpg from './ssdas.png'
 import headsetas from './headsetas.png'
 import Countdown from 'react-countdown';
+import * as standingai from './test.json';
+import { DataGrid } from '@mui/x-data-grid';
 
 // TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
 const DragableTable = ({ participants }) => {
@@ -18,10 +20,21 @@ const DragableTable = ({ participants }) => {
     const [userID, setUserID] = useState(0);
     const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [loadingStandings, setLoadingStandings] = useState(true);
+    const [standings, setStandings] = useState([])
     const [points, setPoints] =useState(0)
     const notify = () => toast.success("IŠSAUGOTA!");
     const notifyError = () => toast.error("Nepavyko išsaugoti...");
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
+
+
+
+    const columns = [
+        { field: 'display_name', headerName: 'Slapyvardis', sortable: false,flex: 1 },
+        { field: 'points', headerName: 'Taškai', flex: 1},
+        { field: 'guessed_right', headerName: 'Teisingai Atspėta',flex: 1},
+    ]
+
     useEffect(() => {
         setUserID(localStorage.getItem('twitchCode'))
         const fetchData = async () => {
@@ -43,9 +56,20 @@ const DragableTable = ({ participants }) => {
             ).catch(err => console.log(err));
             setPoints(result.data)
         };
-        fetchData();
-        fetchPoints();
+
+        const fetchAllStandings = async () => {
+            const result = await axios(
+                'https://fillq-333518.appspot.com/api/v1/pickems/standings/'
+            ).catch(err => console.log(err));
+            setStandings(result.data)
+        };
+        // fetchData();
+        // fetchPoints();
         setLoading(false);
+        fetchAllStandings();
+        setStandings(standingai.default)
+        console.log(standings)
+        setLoadingStandings(false)
     }, [setUserID, updatePlayers, participants])
 
     function handleOnDragEnd(result) {
@@ -193,7 +217,18 @@ const DragableTable = ({ participants }) => {
                         <div>
                             <img src={headsetas} alt="RAM" className="border-1 rounded-xl" />
                         </div>
+                            {loadingStandings ? "KRAUNAMA PICKEMŲ ŽIŪROVŲ LENTELĖ..." :
+                            <div style={{ height: '680px', width: '100%' }} className="text-bg bg-white rounded-lg border-2 border-purple-700 col-span-3">
+                                <DataGrid
+                                    rows={standings}
+                                    columns={columns}
+                                    pageSize={10}
+                                    getRowId={(row) => row.user_id}
+                                />
+                            </div>
+                        }
                     </div>
+
                     <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
                 </div>
             }
