@@ -215,7 +215,7 @@ const DragableTable = ({ participants }) => {
                         <div>
                             <img src={headsetas} alt="RAM" className="border-1 rounded-xl" />
                         </div>
-                            {loadingStandings ? "KRAUNAMA PICKEMŲ ŽIŪROVŲ LENTELĖ..." :
+                            {/* {loadingStandings ? "KRAUNAMA PICKEMŲ ŽIŪROVŲ LENTELĖ..." :
                             <div style={{ height: '680px', width: '100%' }} className="text-bg bg-white rounded-lg border-2 border-purple-700 col-span-3">
                                 <DataGrid
                                     rows={standings}
@@ -224,7 +224,7 @@ const DragableTable = ({ participants }) => {
                                     getRowId={(row) => row.user_id}
                                 />
                             </div>
-                        }
+                        } */}
                     </div>
 
                     <ToastContainer className="text-xl text-purple-600" position="bottom-right" />
