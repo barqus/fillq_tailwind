@@ -11,7 +11,6 @@ import ramjpg from './ramai.png'
 import ssdjpg from './ssdas.png'
 import headsetas from './headsetas.png'
 import Countdown from 'react-countdown';
-import * as standingai from './test.json';
 import { DataGrid } from '@mui/x-data-grid';
 
 // TODO: LEARN HOW SPINNERS AND LOADING  WORKS AND HOW TO USE THEM IN ALL OF THE PROJECT
@@ -67,8 +66,7 @@ const DragableTable = ({ participants }) => {
         // fetchPoints();
         setLoading(false);
         fetchAllStandings();
-        setStandings(standingai.default)
-        console.log(standings)
+        // setStandings(standingai.default)
         setLoadingStandings(false)
     }, [setUserID, updatePlayers, participants])
 
