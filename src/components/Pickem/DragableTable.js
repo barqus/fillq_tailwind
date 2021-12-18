@@ -58,7 +58,7 @@ const DragableTable = ({ participants }) => {
 
         const fetchAllStandings = async () => {
             const result = await axios(
-                'https://fillq-333518.appspot.com/api/v1/pickems/standings/'
+                'https://fillq-333518.appspot.com/api/v1/pickems/standings'
             ).catch(err => console.log(err));
             setStandings(result.data)
         };
