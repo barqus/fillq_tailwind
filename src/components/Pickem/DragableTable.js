@@ -18,6 +18,7 @@ const DragableTable = ({ participants }) => {
     const [userID, setUserID] = useState(0);
     const [userAlreadyPosted, setUserAlreadyPosted] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [points, setPoints] =useState(0)
     const notify = () => toast.success("IŠSAUGOTA!");
     const notifyError = () => toast.error("Nepavyko išsaugoti...");
     const notifyDeleteError = () => toast.error("Nepavyko ištrinti jūsų pickemų...");
@@ -35,7 +36,15 @@ const DragableTable = ({ participants }) => {
                 updatePlayers(participants)
             }
         };
+
+        const fetchPoints = async () => {
+            const result = await axios(
+                'https://fillq-333518.appspot.com/api/v1/pickems/standings/' + localStorage.getItem('twitchCode')
+            ).catch(err => console.log(err));
+            setPoints(result.data)
+        };
         fetchData();
+        fetchPoints();
         setLoading(false);
     }, [setUserID, updatePlayers, participants])
 
@@ -134,7 +143,8 @@ const DragableTable = ({ participants }) => {
                             </p>
                         </div>
                         <div className="col-span-2 mt-12">
-                            <p>TAVO PICK'EMS</p>
+                            {loading ? <p>TAVO PICK'EMS SURINKTI TAŠKAI: {points}</p> : "KRAUNAMA..."}
+
                             {loading ? <p className="text-center mt-2 text-xl">KRAUNAMA...</p> :
                                 <DragDropContext onDragEnd={handleOnDragEnd}>
                                     <Droppable droppableId="players">
@@ -172,6 +182,7 @@ const DragableTable = ({ participants }) => {
                                     className="bg-transparent hover:bg-purple-400 text-purple-400 text-lg font-semibold hover:text-white py-1 px-2 border border-purple-400 hover:border-transparent rounded" >
                                     {userAlreadyPosted ? "ATNAUJINTI" : "PASKELBTI"}
                                 </button>}
+                            
                         </div>
                         <div className="">
                             <img src={ssdjpg} className="border-1 rounded-xl" alt="SSD" />
