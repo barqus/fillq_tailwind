@@ -62,8 +62,8 @@ const DragableTable = ({ participants }) => {
             ).catch(err => console.log(err));
             setStandings(result.data)
         };
-        // fetchData();
-        // fetchPoints();
+        fetchData();
+        fetchPoints();
         setLoading(false);
         fetchAllStandings();
         // setStandings(standingai.default)
