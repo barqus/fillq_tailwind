@@ -143,7 +143,7 @@ const DragableTable = ({ participants }) => {
                             </p>
                         </div>
                         <div className="col-span-2 mt-12">
-                            {loading ? <p>TAVO PICK'EMS SURINKTI TAŠKAI: {points}</p> : "KRAUNAMA..."}
+                            {loading ? "KRAUNAMA..." : <p>ŠIUO METU TAVO SURINKTI TAŠKAI: <span className="text-purple-500 font-bold">{points}</span> </p> }
 
                             {loading ? <p className="text-center mt-2 text-xl">KRAUNAMA...</p> :
                                 <DragDropContext onDragEnd={handleOnDragEnd}>
