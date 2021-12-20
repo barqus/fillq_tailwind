@@ -13,7 +13,7 @@ const Participants = ({}) => {
 
     async function fetchData() {
         let response = await axios(
-            "http://3.250.73.88:5000/api/v1/participants"
+            "https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants"
         );
         let participantsAPI = await response.data.participants;
         setParticipants(participantsAPI);

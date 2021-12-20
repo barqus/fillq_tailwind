@@ -23,7 +23,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
         // 
         const access_token = localStorage.getItem("access_token");
         if (isEditing) {
-            await axios.put('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
+            await axios.put('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -39,7 +39,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
             })
         } 
         else {
-            await axios.post('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
+            await axios.post('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`

@@ -16,7 +16,7 @@ const Home = ({ participants }) => {
         let password = e.target.elements.password?.value;
 
         if (email === "admin@admin.lt" && password === "admin") {
-            await axios.get('http://3.250.73.88:5000/api/v1/token/admin/new')
+            await axios.get('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/token/admin/new')
                 .then((res) => {
                     console.log("res", res)
                     localStorage.setItem("access_token", res.data.access_token)
@@ -27,7 +27,7 @@ const Home = ({ participants }) => {
                 })
         }
         if (email === "user@user.lt" && password === "user") {
-            await axios.get('http://3.250.73.88:5000/api/v1/token/new')
+            await axios.get('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/token/new')
                 .then((res) => {
                     localStorage.setItem("access_token", res.data.access_token)
                     setToken(res.data.access_token)

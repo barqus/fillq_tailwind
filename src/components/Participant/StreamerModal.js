@@ -25,7 +25,7 @@ const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editUsernam
         if (isEditing) {
             console.log("DASDASD", live)
             
-            await axios.put('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/'+editID, { id: editID, is_live: Boolean(live), username: username },
+            await axios.put('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/'+editID, { id: editID, is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -42,7 +42,7 @@ const SummonerModal = ({ fetchData, setShowModal, isEditing, editID, editUsernam
         } 
         else {
             console.log("DASDASD", live)
-            await axios.post('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/', { is_live: Boolean(live), username: username },
+            await axios.post('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+summonerID+'/streamers/', { is_live: Boolean(live), username: username },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`

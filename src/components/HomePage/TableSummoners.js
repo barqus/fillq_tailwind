@@ -31,7 +31,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
 
     async function fetchStreamers(id) {
         let response = await axios(
-            "http://3.250.73.88:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
+            "https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
         );
         let str = await response.data.streamers;
         if (str === null) {
@@ -44,7 +44,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
     
     async function fetchStreamerData(pID, sumID) {
         let response = await axios(
-            "http://3.250.73.88:5000/api/v1/participants/" + pID + "/summoners/"+ sumID + "/streamers/"
+            "https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/" + pID + "/summoners/"+ sumID + "/streamers/"
         );
         let str = await response.data.streamers;
         if (str === null) {
@@ -64,13 +64,13 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
 
     const HandleDelete = async (id) => {
         // let response = await axios(
-        //     "http://3.250.73.88:5000/api/v1/participants"
+        //     "https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants"
         // );
         // let participantsAPI = await response.data.participants;
         // setParticipants(participantsAPI);
         // setLoaded(true)
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://3.250.73.88:5000/api/v1/participants/' + participantID + '/summoners/' + id,
+        await axios.delete('https://cors-everywhere.herokuapp.com/http://3.250.73.88:5000/api/v1/participants/' + participantID + '/summoners/' + id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
