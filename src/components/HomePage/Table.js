@@ -35,7 +35,7 @@ const Table = ({ participants, fetchData }) => {
 
     async function fetchSummoners(id) {
         let response = await axios(
-            "http://54.74.76.227:5000/api/v1/participants/" + id + "/summoners/"
+            "http://3.250.73.88:5000/api/v1/participants/" + id + "/summoners/"
         );
         let summ = await response.data.summoners;
         if (summ === null) {
@@ -56,13 +56,13 @@ const Table = ({ participants, fetchData }) => {
 
     const HandleDelete = async (id) => {
         // let response = await axios(
-        //     "http://54.74.76.227:5000/api/v1/participants"
+        //     "http://3.250.73.88:5000/api/v1/participants"
         // );
         // let participantsAPI = await response.data.participants;
         // setParticipants(participantsAPI);
         // setLoaded(true)
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://54.74.76.227:5000/api/v1/participants/' + id,
+        await axios.delete('http://3.250.73.88:5000/api/v1/participants/' + id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -89,10 +89,10 @@ const Table = ({ participants, fetchData }) => {
                             <thead className="font-bold bg-gradient-to-r from-purple-800 to-green-500 ">
                                 <tr >
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Name
+                                        Vardas
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Surname
+                                        Pavardė
                                     </th>
                                     <th>
                                     </th>

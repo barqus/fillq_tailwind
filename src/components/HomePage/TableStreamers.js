@@ -30,7 +30,7 @@ const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerDat
 
     // async function fetchStreamers(id) {
     //     let response = await axios(
-    //         "http://54.74.76.227:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
+    //         "http://3.250.73.88:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
     //     );
     //     let str = await response.data.streamers;
     //     if (str === null) {
@@ -49,7 +49,7 @@ const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerDat
 
     const HandleDelete = async (id) => {
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://54.74.76.227:5000/api/v1/participants/' + participantID + '/summoners/' + summonerID + '/streamers/'+ id,
+        await axios.delete('http://3.250.73.88:5000/api/v1/participants/' + participantID + '/summoners/' + summonerID + '/streamers/'+ id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -72,7 +72,7 @@ const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerDat
     return (
         <div className="container" >
             <div className="flex my-6 ">
-                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD STREAMER</button>
+                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">PRIDĖTI TRANSLIACIJĄ</button>
             </div>
             <div className="mt-6 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2     align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -84,10 +84,10 @@ const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerDat
                             <thead className="font-bold bg-gradient-to-r from-purple-800 to-green-500 ">
                                 <tr >
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Username
+                                        Slapyvardis
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Is Live
+                                        Transliacija
                                     </th>
                                     <th>
                                     </th>
@@ -107,7 +107,7 @@ const TableStreamers = ({ streamers, participantID, summonerID, fetchStreamerDat
                                         <tr key={key}>
 
                                             <td className="px-6 py-4 whitespace-nowrap text-left">{item.username}</td>
-                                            <td className="pl-6 py-4 whitespace-nowrap text-left">{item.is_live ? "LIVE" : "OFFLINE"}</td>
+                                            <td className="pl-6 py-4 whitespace-nowrap text-left">{item.is_live ? "ĮJUNGTA" : "IŠJUNGTA"}</td>
 
                                             <td><AiOutlineEdit className=" text-yellow-400 text-2xl cursor-pointer" onClick={() => HandleEdit(item.id, item.username, item.is_live)} /></td>
                                             <td><BsTrash className=" text-red-400 text-2xl cursor-pointer" onClick={() => HandleDelete(item.id)} /></td>

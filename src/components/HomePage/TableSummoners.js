@@ -31,7 +31,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
 
     async function fetchStreamers(id) {
         let response = await axios(
-            "http://54.74.76.227:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
+            "http://3.250.73.88:5000/api/v1/participants/" + participantID + "/summoners/"+ id + "/streamers/"
         );
         let str = await response.data.streamers;
         if (str === null) {
@@ -44,7 +44,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
     
     async function fetchStreamerData(pID, sumID) {
         let response = await axios(
-            "http://54.74.76.227:5000/api/v1/participants/" + pID + "/summoners/"+ sumID + "/streamers/"
+            "http://3.250.73.88:5000/api/v1/participants/" + pID + "/summoners/"+ sumID + "/streamers/"
         );
         let str = await response.data.streamers;
         if (str === null) {
@@ -64,13 +64,13 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
 
     const HandleDelete = async (id) => {
         // let response = await axios(
-        //     "http://54.74.76.227:5000/api/v1/participants"
+        //     "http://3.250.73.88:5000/api/v1/participants"
         // );
         // let participantsAPI = await response.data.participants;
         // setParticipants(participantsAPI);
         // setLoaded(true)
         const access_token = localStorage.getItem("access_token");
-        await axios.delete('http://54.74.76.227:5000/api/v1/participants/' + participantID + '/summoners/' + id,
+        await axios.delete('http://3.250.73.88:5000/api/v1/participants/' + participantID + '/summoners/' + id,
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -93,7 +93,7 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
     return (
         <div className="container" >
             <div className="flex my-6 ">
-                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD SUMMONER</button>
+                <button onClick={() => openModal()} className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">PRIDĖTI "SUMMONER"</button>
             </div>
             <div className="mt-6 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2     align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -105,10 +105,10 @@ const TableSummoners = ({ summoners, participantID, fetchSummonerData }) => {
                             <thead className="font-bold bg-gradient-to-r from-purple-800 to-green-500 ">
                                 <tr >
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Summoner Name
+                                        "Summoner" Slapyvardis
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-left text-base  uppercase tracking-wider cursor-pointer">
-                                        Rank
+                                        Reitingas
                                     </th>
                                     <th>
                                     </th>

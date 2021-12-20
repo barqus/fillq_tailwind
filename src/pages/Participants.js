@@ -13,7 +13,7 @@ const Participants = ({}) => {
 
     async function fetchData() {
         let response = await axios(
-            "http://54.74.76.227:5000/api/v1/participants"
+            "http://3.250.73.88:5000/api/v1/participants"
         );
         let participantsAPI = await response.data.participants;
         setParticipants(participantsAPI);
@@ -29,7 +29,7 @@ const Participants = ({}) => {
 
             <div className="container mt-6 mb-6">
                 <div className="flex my-6 ">
-                    <button onClick={() => setShowModal(true)}  className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">ADD PARTICIPANT</button>
+                    <button onClick={() => setShowModal(true)}  className="bg-purple-700 hover:bg-purple-500 text-xl text-white font-bold py-2 px-4 rounded">PRIDĖTI DALYVĮ</button>
                 </div>
                 { showModal ? <PlayerModal isEditing={false} fetchData={fetchData} setShowModal={setShowModal}/> : ""}
                 { loaded ? <Table participants={participants} fetchData={fetchData}/> : "LOADING..."}

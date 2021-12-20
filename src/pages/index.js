@@ -16,7 +16,7 @@ const Home = ({ participants }) => {
         let password = e.target.elements.password?.value;
 
         if (email === "admin@admin.lt" && password === "admin") {
-            await axios.get('http://54.74.76.227:5000/api/v1/token/admin/new')
+            await axios.get('http://3.250.73.88:5000/api/v1/token/admin/new')
                 .then((res) => {
                     console.log("res", res)
                     localStorage.setItem("access_token", res.data.access_token)
@@ -27,8 +27,7 @@ const Home = ({ participants }) => {
                 })
         }
         if (email === "user@user.lt" && password === "user") {
-            // http://{{Server}}:5000/api/v1/token/new
-            await axios.get('http://54.74.76.227:5000/api/v1/token/new')
+            await axios.get('http://3.250.73.88:5000/api/v1/token/new')
                 .then((res) => {
                     localStorage.setItem("access_token", res.data.access_token)
                     setToken(res.data.access_token)
@@ -60,21 +59,21 @@ const Home = ({ participants }) => {
 
                         <form onSubmit={handleFormSubmit}>
                             <div>
-                                <label htmlFor='email'>Email</label>
+                                <label htmlFor='email'>El. paštas</label>
                                 <input
                                     type='email'
                                     className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 text-black`}
                                     id='email'
-                                    placeholder='Your Email'
+                                    placeholder='El. paštas'
                                 />
                             </div>
                             <div>
-                                <label htmlFor='password'>Password</label>
+                                <label htmlFor='password'>Slaptažodis</label>
                                 <input
                                     type='password'
                                     className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4 text-black`}
                                     id='password'
-                                    placeholder='Your Password'
+                                    placeholder='Slaptažodis'
                                 />
                             </div>
 
@@ -82,7 +81,7 @@ const Home = ({ participants }) => {
                                 <button
                                     className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
                                 >
-                                    Login
+                                    Prisijungti
                                 </button>
                             </div>
                         </form>
@@ -96,7 +95,7 @@ const Home = ({ participants }) => {
                         className={`bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
                         onClick={() => Logout()}
                     >
-                        Logout
+                        Atsijungti
                     </button>
                 </div>}
         </>

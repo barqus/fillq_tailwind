@@ -23,7 +23,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
         // 
         const access_token = localStorage.getItem("access_token");
         if (isEditing) {
-            await axios.put('http://54.74.76.227:5000/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
+            await axios.put('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/'+editID, { id: editID, name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -39,7 +39,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
             })
         } 
         else {
-            await axios.post('http://54.74.76.227:5000/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
+            await axios.post('http://3.250.73.88:5000/api/v1/participants/'+participantID+'/summoners/', { name: name, rank: rank },
             {
                 headers: {
                     'Authorization': `Bearer ${access_token}`
@@ -70,7 +70,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                     <div className="w-6xl border-2 border-opacity-20 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-900 outline-none focus:outline-none" ref={wrapperRef}>
                         <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t bg-gradient-to-r from-purple-800 to-green-500 ">
                             <h3 className="text-3xl font-semibold text-white">
-                                {isEditing ? "EDIT SUMMONER" : "ADD SUMMONER"}
+                                {isEditing ? '"SUMMONER" REDAGAVIMAS' : '"SUMMONER" PRIDĖJIMAS' }
                             </h3>
                             <div className=" cursor-pointer p-1 ml-auto border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                                 <AiOutlineClose onClick={() => setShowModal(false)} />
@@ -83,7 +83,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                                 <div className="md:flex md:items-center mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                                            Nickname
+                                            Slapyvardis
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -94,7 +94,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                                 <div className="md:flex md:items-center mb-6">
                                     <div className="md:w-1/3">
                                         <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                                            Rank
+                                            Reitingas
                                         </label>
                                     </div>
                                     <div className="md:w-2/3">
@@ -105,7 +105,7 @@ const StreamerModal = ({ fetchData, setShowModal, isEditing, editID, editName, e
                                 <div className="flex">
                                     <div>
                                         <button onClick={handleSubmit} className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                            {isEditing ? "EDIT" : "ADD"}
+                                            {isEditing ? "REDAGUOTI" : "PRIDĖ<TI></TI>"}
                                         </button>
                                     </div>
 

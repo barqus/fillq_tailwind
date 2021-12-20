@@ -7,7 +7,7 @@ const Summoners = ({summnoer}) => {
 
     // async function fetchData() {
     //     let response = await axios(
-    //         "http://54.74.76.227:5000/api/v1/participants"
+    //         "http://3.250.73.88:5000/api/v1/participants"
     //     );
     //     let participantsAPI = await response.data.participants;
     //     setParticipants(participantsAPI);
